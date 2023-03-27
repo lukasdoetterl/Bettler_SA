@@ -74,4 +74,5 @@ class PvPGameSpec extends AnyWordSpec:
             restoredGame.equals(game) should be(true)
             GameStateContext.state.isInstanceOf[PlayerTurnState] should be(true)
         }
+        
     }

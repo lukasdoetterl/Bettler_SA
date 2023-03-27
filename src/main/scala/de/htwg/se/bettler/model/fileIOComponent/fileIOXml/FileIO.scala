@@ -31,14 +31,14 @@ class FileIO extends FileIOInterface:
         val p1 = player1.text.split(" ")
         val p2 = player2.text.split(" ")
         println(p1(1))
-        for (i <- 0 to p1.size - 1)
-            Card(p1(i)) match
-                case Success(c) => cards1 = cards1.add(c)
-                case Failure(f) => println("test")
-        for (i <- 0 to p2.size - 1)
-            Card(p2(i)) match
-                case Success(c) => cards2 = cards2.add(c)
-                case Failure(f) => println("test")
+        (0 to p1.size - 1)
+          .map(i => Card(p1(i)) match
+              case Success(c) => cards1 = cards1.add(c)
+              case Failure(f) => println("test"))
+        (0 to p2.size - 1)
+          .map(i => Card(p2(i)) match
+              case Success(c) => cards2 = cards2.add(c)
+              case Failure(f) => println("test"))
         return PvPGame(Vector(cards1, cards2), board, message.text)
 
     override def save(game: Game): Unit =

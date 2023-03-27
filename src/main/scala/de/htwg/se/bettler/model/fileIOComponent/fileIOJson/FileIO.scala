@@ -37,24 +37,27 @@ class FileIO extends FileIOInterface:
         val player2 = (json \ "player2")
         val board = (json \ "board")
         val msg = (json \ "message").as[String]
-        for (i <- 0 to (player1 \ "anzahl").as[Int] - 1)
-            val value = (player1.get \\ "value")(i).as[String]
-            val symbol = (player1.get \\ "symbol")(i).as[String]
-            Card(symbol + value) match
-                case Success(c) => p1cards = p1cards.add(c)
-                case Failure(e) => e.printStackTrace
-        for (i <- 0 to (player2 \ "anzahl").as[Int] - 1)
-            val value = (player2.get \\ "value")(i).as[String]
-            val symbol = (player2.get \\ "symbol")(i).as[String]
-            Card(symbol + value) match
-                case Success(c) => p2cards = p2cards.add(c)
-                case Failure(e) =>
-        for (i <- 0 to (board \ "anzahl").as[Int] - 1)
-            val value = (board.get \\ "value")(i).as[String]
-            val symbol = (board.get \\ "symbol")(i).as[String]
-            Card(symbol + value) match
-                case Success(c) => boardc = boardc.add(c)
-                case Failure(e) =>
+        (0 to (player1 \ "anzahl").as[Int] - 1)
+          .map(i =>
+              val value = (player1.get \\ "value") (i).as[String]
+              val symbol = (player1.get \\ "symbol") (i).as[String]
+                Card (symbol + value) match
+                  case Success(c) => p1cards = p1cards.add(c)
+                  case Failure(e) => e.printStackTrace)
+        (0 to (player2 \ "anzahl").as[Int] - 1)
+          .map(i =>
+              val value = (player2.get \\ "value") (i).as[String]
+              val symbol = (player2.get \\ "symbol") (i).as[String]
+                Card (symbol + value) match
+                  case Success(c) => p2cards = p2cards.add(c)
+                  case Failure(e) =>)
+        (0 to (board \ "anzahl").as[Int] - 1)
+          .map(i =>
+              val value = (board.get \\ "value") (i).as[String]
+              val symbol = (board.get \\ "symbol") (i).as[String]
+                Card (symbol + value) match
+                  case Success(c) => boardc = boardc.add(c)
+                  case Failure(e) =>)
         PvPGame(Vector(p1cards, p2cards), boardc, msg)
 
     override def save(game : Game) = 

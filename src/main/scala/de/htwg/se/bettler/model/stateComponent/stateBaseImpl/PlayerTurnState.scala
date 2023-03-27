@@ -14,6 +14,8 @@ case class PlayerTurnState(currentPlayer : Int, maxPlayers : Int) extends State:
             case GameStateEvents.Start => PlayerTurnState(0, maxPlayers)
             case GameStateEvents.Finished =>
                 var loser = currentPlayer + 1
+                
                 if loser >= maxPlayers then
                     loser = 0
+                
                 FinishedState(currentPlayer, loser)

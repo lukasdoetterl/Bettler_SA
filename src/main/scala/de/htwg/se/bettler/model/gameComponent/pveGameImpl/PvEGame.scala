@@ -60,9 +60,9 @@ case class PvEGame @Inject()(players : Vector[CardsInterface], board : CardsInte
         val loserBestCard = loserCards.bestCards
         val newWinnerCards = winnerCards.remove(winnerWorstCard).add(loserBestCard)
         val newLoserCards = loserCards.remove(loserBestCard).add(winnerWorstCard)
-        var newPlayers = newGame.getPlayers().updated(winnerIndex, newWinnerCards)
+        val newPlayersF = newGame.getPlayers().updated(winnerIndex, newWinnerCards)
         val newMsg = "Player " + (loserIndex + 1) + " turn."
-        newPlayers = newPlayers.updated(loserIndex, newLoserCards)
+        val newPlayers = newPlayersF.updated(loserIndex, newLoserCards)
         GameStateContext.handle(GameStateEvents.Start)
         if (GameStateContext.getState().asInstanceOf[PlayerTurnState].currentPlayer == 1) then
             return PvEGame(newPlayers, newGame.getBoard(), newMsg).aiTurn(newPlayers, newGame.getBoard())

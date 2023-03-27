@@ -1,9 +1,11 @@
 package de.htwg.se.bettler
 package model
 
-import gameComponent._
+import gameComponent.*
 import cardComponent.cardBaseImpl.Cards
-import cardComponent._
+import cardComponent.*
+
+import scala.language.postfixOps
 
 case class Field(game : Game):
 
@@ -12,17 +14,21 @@ case class Field(game : Game):
   def printCard(card : CardInterface) : String =
     var s = card.toString()
     s = s.filter(!"()".contains(_))
-    var r = "[" + s + "]"
+    val r = "[" + s + "]"
     return r
 
 
   def printField() : String =
     var r = ""
     var i = 0
-    for (players <- game.getPlayers())
-      i += 1
-      r += eol + bar() + "Player " + i + eol
-      players.returnSet.foreach{r += printCard(_)}
+    game.getPlayers()
+      .map(players =>
+        i += 1
+          r += eol +bar() + "Player " + i + eol
+          players
+        .returnSet.foreach {
+        r += printCard(_)
+      })
     r += eol + bar()
     game.getBoard().returnSet.foreach{r+= printCard(_)}
     r += eol + bar()
