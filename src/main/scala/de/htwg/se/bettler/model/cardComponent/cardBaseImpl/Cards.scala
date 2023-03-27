@@ -72,14 +72,14 @@ case class Cards(cards : Set[CardInterface]) extends CardsInterface:
 
     def bestCards : CardsInterface = 
         var tmp = cards.head
-        for (card <- cards)
-            if card.isHigher(tmp) then
-                tmp = card
+        cards
+          .map(card => if card.isHigher(tmp) then
+              tmp = card)
         return Cards(Set(tmp))
 
     def worstCards : CardsInterface = 
         var tmp = cards.head
-        for (card <- cards)
-            if tmp.isHigher(card) then
-                tmp = card
+        cards
+          .map(card => if tmp.isHigher(card) then
+              tmp = card)
         return Cards(Set(tmp))
