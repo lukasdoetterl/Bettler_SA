@@ -15,13 +15,10 @@ case class Deck(size : Int) extends DeckInterface:
         deck = deck + Card(Symbol.Clubs, Value.Seven) + Card(Symbol.Clubs, Value.Eight) + Card(Symbol.Clubs, Value.Nine) + Card(Symbol.Clubs, Value.Ten) + Card(Symbol.Clubs, Value.Jack) + Card(Symbol.Clubs, Value.Queen) + Card(Symbol.Clubs, Value.King) + Card(Symbol.Clubs, Value.Ace)
         deck = deck + Card(Symbol.Spades, Value.Seven) + Card(Symbol.Spades, Value.Eight) + Card(Symbol.Spades, Value.Nine) + Card(Symbol.Spades, Value.Ten) + Card(Symbol.Spades, Value.Jack) + Card(Symbol.Spades, Value.Queen) + Card(Symbol.Spades, Value.King) + Card(Symbol.Spades, Value.Ace)
     }
-    def draw() : Cards = 
+    def draw(): Cards = {
         val ran = Random()
-        var l : List[CardInterface] = deck.toList
-        l = ran.shuffle(l).slice(0, 7)
-        var r = Set.empty[CardInterface]
-        for (ll <- l) {
-            r = r + ll
-        }
-        deck = deck -- r
-        return Cards(r)
+        val l = ran.shuffle(deck.toList).take(7)
+        val drawnCards = Cards(l.toSet)
+        deck = deck -- drawnCards.cards
+        drawnCards
+    }

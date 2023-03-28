@@ -55,17 +55,17 @@ class FileIO extends FileIOInterface:
             <maxplayer maxplayer= {GameStateContext.state.asInstanceOf[PlayerTurnState].maxPlayers.toString}> </maxplayer>
             <player1>
                 {
-                   for (cp<-game.getPlayers()(0).returnSet) yield cp.toString + " "
+                   game.getPlayers()(0).returnSet.map(cp => cp.toString + " ")
                 }
             </player1>
             <player2>
                 {
-                    for (cp<-game.getPlayers()(1).returnSet) yield cp.toString + " "
+                    game.getPlayers()(1).returnSet.map(cp => cp.toString + " ")
                 }
             </player2>
             <board>
                 {
-                    for (cp<-game.getBoard().returnSet) yield cp.toString + " "
+                    game.getBoard().returnSet.map(cp => cp.toString + " ")
                 }
             </board>
             <message message= {game.getMessage()}> </message>
@@ -77,5 +77,5 @@ class FileIO extends FileIOInterface:
 
     def playerToXML(p : CardsInterface) =
         {
-            for c <- p.returnSet yield cardToXML(c)
+            p.returnSet.map(c => cardToXML(c))
         }
