@@ -16,23 +16,13 @@ case class Field(game : Game):
     return "[" + s + "]"
 
 
-  def printField(): String =
-    var r = ""
-    var i = 0
-    game.getPlayers()
-      .map(players =>
-        i += 1
-        r += eol + bar() + "Player " + i + eol
-        players
-          .returnSet.map {
-          r += printCard(_)
-        })
-    r += eol + bar()
-    game.getBoard().returnSet.map {
-      r += printCard(_)
+  def printField(): String = {
+    val playerStrings = game.getPlayers().zipWithIndex.map { case (players, i) =>
+      eol + bar() + "Player " + (i+1) + eol + players.returnSet.map(printCard).mkString("")
     }
-    r += eol + bar()
-    return r
+    val boardString = eol + bar()  + game.getBoard().returnSet.map(printCard).mkString("") + eol + bar()
+    playerStrings.mkString(eol) + eol + boardString
+  }
 
 
   def bar(cellwidth: Int = 50) =

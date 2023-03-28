@@ -46,40 +46,38 @@ case class Cards(cards : Set[CardInterface]) extends CardsInterface:
 
     def size = cards.size
 
-    def groupBySameValue : Vector[CardsInterface] =
-        var group = Vector.empty[Cards]
-        for (value <- 7 to 14)
-            var groupCards = Set.empty[CardInterface]
-            cards
-              .map(card => if card.intValue.equals(value) then
-                  groupCards += card)
-            if groupCards.nonEmpty then
-                group = group :+ Cards(groupCards)
-        return group
+    def groupBySameValue: Vector[CardsInterface] = {
+        val groups = (7 to 14).map { value =>
+            val groupCards = cards.filter(_.intValue == value)
+            if (groupCards.nonEmpty) Some(Cards(groupCards)) else None
+        }.collect { case Some(cards) => cards }
+        groups.toVector
+    }
 
 
-    def findPlayable(board : CardsInterface) : Option[CardsInterface] =
-        this.groupBySameValue
-          .map(c => if board.isWorse(c) then return Some(c))
+    def findPlayable(board: CardsInterface): Option[CardsInterface] = {
+        val groupByValue = this.groupBySameValue
 
-        this.groupBySameValue
-          .map(c => if c.size > board.size then
-              var reducedCards = Set.empty[CardInterface]
+        groupByValue.find(board.isWorse).orElse {
+            groupByValue.find(_.size > board.size).flatMap { c =>
+                val reducedCards = c.returnSet.take(board.size)
+                if (board.isWorse(Cards(reducedCards))) Some(Cards(reducedCards)) else None
+            }
+        }
+    }
 
-              c.returnSet.toArray.slice(0, board.size).map { x => reducedCards = reducedCards + x }
-              if board.isWorse(Cards(reducedCards)) then return Some(Cards(reducedCards)))
-        return None
+    def bestCards: CardsInterface = {
+        val tmp = cards.head
+        val highestCard = cards.foldLeft(tmp) { (acc, card) =>
+            if (card.isHigher(acc)) card else acc
+        }
+        Cards(Set(highestCard))
+    }
 
-    def bestCards : CardsInterface = 
-        var tmp = cards.head
-        cards
-          .map(card => if card.isHigher(tmp) then
-              tmp = card)
-        return Cards(Set(tmp))
-
-    def worstCards : CardsInterface = 
-        var tmp = cards.head
-        cards
-          .map(card => if tmp.isHigher(card) then
-              tmp = card)
-        return Cards(Set(tmp))
+    def worstCards: CardsInterface = {
+        val tmp = cards.head
+        val lowestCard = cards.foldLeft(tmp) { (acc, card) =>
+            if (acc.isHigher(card)) card else acc
+        }
+        Cards(Set(lowestCard))
+    }
