@@ -19,6 +19,7 @@ trait CardInterface:
     def image:File
     def sameValue(card : CardInterface):Boolean
     def isHigher(card : CardInterface):Boolean
+    def isLower(card : CardInterface):Boolean
     def getSymbol:Symbol
     def getValue:Value
     def intValue:Int

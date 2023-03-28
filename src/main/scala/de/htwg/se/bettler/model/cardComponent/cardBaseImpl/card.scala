@@ -22,11 +22,14 @@ case class Card(symbol : Symbol, value : Value) extends CardInterface:
     override def toString = symbol.toString + value.toString
     def image = new File(f"src/main/scala/de/htwg/se/bettler/model/cardcomponent/cardpictures/" + symbol.toString + value.toString + ".png")
     def sameValue(card : CardInterface) = this.value == card.getValue
-    def isHigher(card : CardInterface) = this.value.getValue > card.getValue.getValue
+    def compareValue(card : CardInterface)(f: (Int, Int) => Boolean) = f(this.value.getValue, card.getValue.getValue)
+    def isHigher(card: CardInterface) = compareValue(card)(_ > _)
+    def isLower(card: CardInterface) = compareValue(card)(_ < _)
     def toCards = Cards(Set(this))
     def getSymbol = symbol
     def getValue = value
     def intValue = value.getValue
+
 
 object Card :
     def apply(input : String) : Try[Card] =
