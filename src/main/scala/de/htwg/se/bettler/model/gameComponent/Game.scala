@@ -28,3 +28,4 @@ object Game:
         case "pve" => 
             GameStateContext.handle(GameStateEvents.Start)
             PvEGame()
+        case _ => throw new IllegalArgumentException("You Should not have messed with this Code")

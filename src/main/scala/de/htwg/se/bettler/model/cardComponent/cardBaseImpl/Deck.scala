@@ -15,7 +15,11 @@ case class Deck(size: Int) extends DeckInterface {
         val vaList = List(Value.Seven, Value.Eight, Value.Nine, Value.Ten, Value.Jack, Value.Queen, Value.King, Value.Ace)
 
         for (sym <- symList; va <- vaList) {
-            deck += Card(sym, va)
+            val tryCard: Try[CardInterface] = Try(Card(sym, va))
+            tryCard match
+                case Success(card) => deck += card
+                case Failure(ex) => println(s"Error creating card ")
+
         }
     }
 

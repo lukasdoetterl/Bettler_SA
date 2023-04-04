@@ -32,40 +32,19 @@ case class Card(symbol : Symbol, value : Value) extends CardInterface:
 
 
 object Card :
-    def applyOLD(input : String) : Try[Card] =
-        if input.length < 2 || input.length > 4 then return Failure(NoCardException("The string is too short or too long to be a card."))
-        val s = input(0)
-        val v = input.slice(1, input.length)
-        val sym = s match
-            case 'H' => Symbol.Hearts
-            case 'D' => Symbol.Diamonds
-            case 'S' => Symbol.Spades
-            case 'C' => Symbol.Clubs
-            case _ => Symbol.Empty
-        val va = v match
-            case "7" => Value.Seven
-            case "8" => Value.Eight
-            case "9" => Value.Nine
-            case "10" => Value.Ten
-            case "J" => Value.Jack
-            case "Q" => Value.Queen
-            case "K" => Value.King
-            case "A" => Value.Ace
-            case _ => Value.Empty
-        if sym == Symbol.Empty || va == Value.Empty then Failure(NoCardException("The string is not a card."))
-        else Success(Card(sym, va))
-
     def apply(input: String): Try[Card] =
         val result =
+
             for
-                sym <- Try(input.charAt(0)).flatMap {
+                symbol <- Try(input.charAt(0)).flatMap {
                     case 'H' => Success(Symbol.Hearts)
                     case 'D' => Success(Symbol.Diamonds)
                     case 'S' => Success(Symbol.Spades)
                     case 'C' => Success(Symbol.Clubs)
                     case _ => Failure(NoCardException("The string is not a card."))
                 }
-                va <- Try(input.drop(1)).flatMap(v => Try {
+
+                value <- Try(input.drop(1)).flatMap(v => Try {
                     v match
                         case "7" => Value.Seven
                         case "8" => Value.Eight
@@ -80,7 +59,7 @@ object Card :
                     case Value.Empty => Failure(NoCardException("The string is not a card."))
                     case other => Success(other)
                 }
-            yield Card(sym, va)
+            yield Card(symbol, value)
         result.recoverWith {
             case ex: Exception => Failure(NoCardException(s"Error parsing card: ${ex.getMessage}"))
         }
