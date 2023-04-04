@@ -5,20 +5,25 @@ package cardBaseImpl
 
 import scala.util.Random
 import cardComponent.Symbol
+import scala.util.{Try, Success, Failure}
 
-case class Deck(size : Int) extends DeckInterface:
+case class Deck(size: Int) extends DeckInterface {
     var deck = Set.empty[CardInterface]
 
-    if size == 32 then {
-        deck = Set(Card(Symbol.Hearts, Value.Seven), Card(Symbol.Hearts, Value.Eight), Card(Symbol.Hearts, Value.Nine), Card(Symbol.Hearts, Value.Ten), Card(Symbol.Hearts, Value.Jack), Card(Symbol.Hearts, Value.Queen), Card(Symbol.Hearts, Value.King), Card(Symbol.Hearts, Value.Ace))
-        deck = deck + Card(Symbol.Diamonds, Value.Seven) + Card(Symbol.Diamonds, Value.Eight) + Card(Symbol.Diamonds, Value.Nine) + Card(Symbol.Diamonds, Value.Ten) + Card(Symbol.Diamonds, Value.Jack) + Card(Symbol.Diamonds, Value.Queen) + Card(Symbol.Diamonds, Value.King) + Card(Symbol.Diamonds, Value.Ace)
-        deck = deck + Card(Symbol.Clubs, Value.Seven) + Card(Symbol.Clubs, Value.Eight) + Card(Symbol.Clubs, Value.Nine) + Card(Symbol.Clubs, Value.Ten) + Card(Symbol.Clubs, Value.Jack) + Card(Symbol.Clubs, Value.Queen) + Card(Symbol.Clubs, Value.King) + Card(Symbol.Clubs, Value.Ace)
-        deck = deck + Card(Symbol.Spades, Value.Seven) + Card(Symbol.Spades, Value.Eight) + Card(Symbol.Spades, Value.Nine) + Card(Symbol.Spades, Value.Ten) + Card(Symbol.Spades, Value.Jack) + Card(Symbol.Spades, Value.Queen) + Card(Symbol.Spades, Value.King) + Card(Symbol.Spades, Value.Ace)
+    if (size == 32) {
+        val symList = List(Symbol.Hearts, Symbol.Diamonds, Symbol.Clubs, Symbol.Spades)
+        val vaList = List(Value.Seven, Value.Eight, Value.Nine, Value.Ten, Value.Jack, Value.Queen, Value.King, Value.Ace)
+
+        for (sym <- symList; va <- vaList) {
+            deck += Card(sym, va)
+        }
     }
+
     def draw(): Cards = {
-        val ran = Random()
+        val ran = scala.util.Random
         val l = ran.shuffle(deck.toList).take(7)
         val drawnCards = Cards(l.toSet)
         deck = deck -- drawnCards.cards
         drawnCards
     }
+}
