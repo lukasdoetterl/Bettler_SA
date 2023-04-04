@@ -10,6 +10,9 @@ import Symbol._
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import java.io.File
+import scala.util.Failure
+import scala.util.Success
+import scala.util.Try
 
 class cardSpec extends AnyWordSpec:
   "Card" should {
@@ -25,21 +28,21 @@ class cardSpec extends AnyWordSpec:
     set2 = set2 + card3
     set3 = set3 + card2
 
-    "have a method for creating a card from a string, failing if the string does not represent a card" in {
-      Card("C7").get should be (Card(Symbol.Clubs,Value.Seven))
-      Card("C8").get should be (Card(Symbol.Clubs,Value.Eight))
-      Card("C9").get should be (Card(Symbol.Clubs,Value.Nine))
-      Card("C10").get should be (Card(Symbol.Clubs,Value.Ten))
-      Card("CJ").get should be (Card(Symbol.Clubs,Value.Jack))
-      Card("CQ").get should be (Card(Symbol.Clubs,Value.Queen))
-      Card("CK").get should be (Card(Symbol.Clubs,Value.King))
-      Card("CA").get should be (Card(Symbol.Clubs,Value.Ace))
-      Card("DA").get should be (Card(Symbol.Diamonds,Value.Ace))
-      Card("SA").get should be (Card(Symbol.Spades,Value.Ace))
-      Card("HA").get should be (Card(Symbol.Hearts,Value.Ace))
-      Card("C11").isFailure should be (true)
-      Card("Q7").isFailure should be (true)
-      Card("").isFailure should be (true)
+    "create a card from a string, failing if the string does not represent a card" in {
+      Card("C7") should be (Success(Card(Symbol.Clubs, Value.Seven)))
+      Card("C8") should be (Success(Card(Symbol.Clubs, Value.Eight)))
+      Card("C9") should be (Success(Card(Symbol.Clubs, Value.Nine)))
+      Card("C10") should be (Success(Card(Symbol.Clubs, Value.Ten)))
+      Card("CJ") should be (Success(Card(Symbol.Clubs, Value.Jack)))
+      Card("CQ") should be (Success(Card(Symbol.Clubs, Value.Queen)))
+      Card("CK") should be (Success(Card(Symbol.Clubs, Value.King)))
+      Card("CA") should be (Success(Card(Symbol.Clubs, Value.Ace)))
+      Card("DA") should be (Success(Card(Symbol.Diamonds, Value.Ace)))
+      Card("SA") should be (Success(Card(Symbol.Spades, Value.Ace)))
+      Card("HA") should be (Success(Card(Symbol.Hearts, Value.Ace)))
+      Card("C11").isFailure should be(true)
+      Card("Q7").isFailure should be(true)
+      Card("").isFailure should be(true)
     }
     "have a method for finding out if a card is higher in value than another card" in {
       card1.isHigher(card2) shouldBe(false)
