@@ -1,0 +1,30 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.PlayCommandSpec, org.scalatest.tools.Framework$$anon$1@25de0112, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec, org.scalatest.tools.Framework$$anon$1@25de0112, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPlayCommandSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mA PlayCommand[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should save a memento of a game from an controller and a state *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  StartState() was not equal to PlayerTurnState(0,2) (PlayCommandSpec.scala:19)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method doStep which sets the memento to the current game and state[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method undoStep which saves the current game and state in the memento and overrides the game and state with the previous values from the memento[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method redoStep which saves the current game and state in the memento and overrides the game and state with the previous values from the memento[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mcontrollerSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mController[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method play, that returns a Game[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method skip to skip a turn[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method start to start a new game[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should throw back none when no game is speciefied[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method toString that returns the games string representation or a message, that the game is not initialized[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to save a game and to restore the game from a saved game[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to start the Next Round[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to undo a turn[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to redo a turn[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 155 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 13[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 12, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	de.htwg.se.bettler.controller.PlayCommandSpec[0m
+[0m[[0m[31merror[0m] [0m[0m(bettler-Core / Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m
