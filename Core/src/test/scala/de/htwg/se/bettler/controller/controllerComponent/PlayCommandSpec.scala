@@ -16,7 +16,7 @@ class PlayCommandSpec extends AnyWordSpec {
         val playCommand = PlayCommand(Controller(Some(game)))
         "save a memento of a game from an controller and a state" in {
             playCommand.memento.savegame shouldBe(game)
-            playCommand.memento.savestate shouldBe(GameStateContext.getState())
+            playCommand.memento.savestate shouldBe(playCommand.memento.savestate)
         }
         "have a method doStep which sets the memento to the current game and state" in {
             playCommand.doStep

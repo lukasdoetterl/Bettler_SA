@@ -25,8 +25,10 @@ lazy val core: Project = Project(id = "bettler-Core", base = file("Core"))
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
     jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
   )
+  .enablePlugins(JacocoCoverallsPlugin)
+parallelExecution in Test := false
 
-lazy val tools: Project = Project(id = "bettler-Model", base = file("Tools"))
+lazy val tools: Project = Project(id = "bettler-Tools", base = file("Tools"))
   .settings(
     name := "bettler-Tools",
     version := "0.1.0-SNAPSHOT",
@@ -47,6 +49,8 @@ lazy val tools: Project = Project(id = "bettler-Model", base = file("Tools"))
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
     jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
   )
+  .enablePlugins(JacocoCoverallsPlugin)
+parallelExecution in Test := false
 
 lazy val view: Project = Project(id = "bettler-view", base = file("view"))
   .dependsOn(core)
@@ -70,6 +74,8 @@ lazy val view: Project = Project(id = "bettler-view", base = file("view"))
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
     jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
   )
+  .enablePlugins(JacocoCoverallsPlugin)
+parallelExecution in Test := false
 
 lazy val root: Project = Project(id = "bettler", base = file("."))
   .dependsOn(core, tools, view)
@@ -94,5 +100,7 @@ lazy val root: Project = Project(id = "bettler", base = file("."))
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
     jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
   )
+  .enablePlugins(JacocoCoverallsPlugin)
+parallelExecution in Test := false
 
 

@@ -1,3 +1,4 @@
 #Successful Tests
-#Tue Apr 11 15:48:34 CEST 2023
-de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec=1681220914055
+#Tue Apr 11 16:24:15 CEST 2023
+de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec=1681223054806
+de.htwg.se.bettler.controller.PlayCommandSpec=1681223054801

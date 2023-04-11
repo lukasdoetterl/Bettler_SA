@@ -1,13 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:15:21 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m15 |[0m    [33mval[0m [36mcontroller[0m = Controller(Some(game))[0m
-[0m[[0m[31merror[0m] [0m[0m   |                     [31m^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |                     Not found: Controller[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:18:31 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m18 |[0m            undomanager.doStep(PlayCommand(controller))[0m
-[0m[[0m[31merror[0m] [0m[0m   |                               [31m^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |                               Not found: PlayCommand[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:26:31 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m26 |[0m            undomanager.doStep(PlayCommand(controller))[0m
-[0m[[0m[31merror[0m] [0m[0m   |                               [31m^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |                               Not found: PlayCommand[0m
-[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[debug] Acquiring lock on file C:\Users\lukas\IdeaProjects\Bettler_SA\project\target\.sbt-compilation-infos\bettler-Tools-test\.sbt-idea-lock ...
+[debug] Releasing lock on file C:\Users\lukas\IdeaProjects\Bettler_SA\project\target\.sbt-compilation-infos\bettler-Tools-test\.sbt-idea-lock.
