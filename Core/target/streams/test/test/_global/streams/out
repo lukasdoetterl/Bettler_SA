@@ -1,5 +1,5 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.PlayCommandSpec, org.scalatest.tools.Framework$$anon$1@25de0112, false, [SuiteSelector])[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec, org.scalatest.tools.Framework$$anon$1@25de0112, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.PlayCommandSpec, org.scalatest.tools.Framework$$anon$1@346c3f0e, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec, org.scalatest.tools.Framework$$anon$1@346c3f0e, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mPlayCommandSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mA PlayCommand[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m- should save a memento of a game from an controller and a state *** FAILED ***[0m[0m
@@ -18,7 +18,7 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to start the Next Round[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to undo a turn[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to redo a turn[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 155 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 45 milliseconds.[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 13[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 12, failed 1, canceled 0, ignored 0, pending 0[0m[0m

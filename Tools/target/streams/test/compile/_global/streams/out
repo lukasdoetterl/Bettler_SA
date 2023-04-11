@@ -1,77 +1,13 @@
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E008] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:9:26 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m9 |[0m[33mimport[0m de.htwg.se.bettler.controller.controllerBaseImp._[0m
-[0m[[0m[31merror[0m] [0m[0m  |       [31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m  |       value controller is not a member of de.htwg.se.bettler[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:12:4 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m12 |[0m    GameStateContext.setState(StartState())[0m
-[0m[[0m[31merror[0m] [0m[0m   |    [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:14:15 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m14 |[0m    [33mval[0m [36mgame[0m = Game([31m"pvp"[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |               [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to Game is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.gameComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:19:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m19 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m0[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:21:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m21 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m1[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:23:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m23 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m0[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:27:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m27 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m0[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:29:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m29 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m1[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:31:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m31 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m0[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E049] Reference Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:33:12 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m33 |[0m            GameStateContext.state.asInstanceOf[[35mPlayerTurnState[0m].currentPlayer shouldBe([31m1[0m)[0m
-[0m[[0m[31merror[0m] [0m[0m   |            [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Reference to GameStateContext is ambiguous,[0m
-[0m[[0m[31merror[0m] [0m[0m   |it is both imported by import de.htwg.se.bettler.model.stateComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |and imported subsequently by import (<error value controller is not a member of de.htwg.se.bettler>#[0m
-[0m[[0m[31merror[0m] [0m[0m   |  controllerBaseImp[0m
-[0m[[0m[31merror[0m] [0m[0m   | : <error value controller is not a member of de.htwg.se.bettler>)._[0m
-[0m[[0m[31merror[0m] [0m[0m10 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:15:21 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m15 |[0m    [33mval[0m [36mcontroller[0m = Controller(Some(game))[0m
+[0m[[0m[31merror[0m] [0m[0m   |                     [31m^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                     Not found: Controller[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:18:31 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m18 |[0m            undomanager.doStep(PlayCommand(controller))[0m
+[0m[[0m[31merror[0m] [0m[0m   |                               [31m^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                               Not found: PlayCommand[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\util\UndoManagerSpec.scala:26:31 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m26 |[0m            undomanager.doStep(PlayCommand(controller))[0m
+[0m[[0m[31merror[0m] [0m[0m   |                               [31m^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                               Not found: PlayCommand[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m

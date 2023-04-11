@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers._
 import model.stateComponent._
 import model.stateComponent.stateBaseImpl._
 import model.gameComponent._
-import de.htwg.se.bettler.controller.controllerBaseImp._
+
 
 class UndoManagerSpec extends AnyWordSpec:
     GameStateContext.setState(StartState())
