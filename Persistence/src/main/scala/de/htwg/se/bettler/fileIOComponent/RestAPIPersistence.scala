@@ -32,7 +32,7 @@ class RestAPIPersistence():
   val RestUIPort = 8081
   val routes: String =
     """
-        """.stripMargin
+         """.stripMargin
 
   val route: Route =
     concat(
@@ -40,8 +40,14 @@ class RestAPIPersistence():
         complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, routes))
       },
       get {
-        path("persistence"/ "load") {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.load.toString))
+        path("persistence" / "load") {
+          //complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.gametoJson(fileIO.load).toString()))
+          complete(fileIO.gameWrites.writes(fileIO.load).toString())
+        }
+      },
+      get {
+        path("persistence" / "test") {
+          complete("test")
         }
       },
       put {

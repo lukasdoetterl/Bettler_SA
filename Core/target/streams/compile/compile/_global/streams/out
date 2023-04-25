@@ -1,42 +1,9 @@
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:14:7 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m14 |[0m[33mimport[0m FileioComponent._[0m
-[0m[[0m[31merror[0m] [0m[0m   |       [31m^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |       Not found: FileioComponent[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:22:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m22 |[0m            [33mcase[0m None => [31m"Currently no game running."[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:32:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m32 |[0m            [33mcase[0m None => [0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:41:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m41 |[0m            [33mcase[0m None => game = None[0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:51:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m51 |[0m            [33mcase[0m None => [0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:60:21 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m60 |[0m                [33mcase[0m None => game = None[0m
-[0m[[0m[31merror[0m] [0m[0m   |                     [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:67:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m67 |[0m            [33mcase[0m None => None[0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:72:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m72 |[0m            [33mcase[0m None => None[0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:83:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m83 |[0m            [33mcase[0m None => None[0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:88:17 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m88 |[0m            [33mcase[0m None => [33mreturn[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error Not found: FileioComponent>[0m#[35mNone[0m found[0m
-[0m[[0m[31merror[0m] [0m[0m10 errors found[0m
-[0m[[0m[31merror[0m] [0m[0m10 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E040] Syntax Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\ControllerAPI.scala:107:112 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m107 |[0m          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, controller.returnGame.get.getBoard().toString())))[0m
+[0m[[0m[31merror[0m] [0m[0m    |                                                                                                                [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m    |                                           '}' expected, but ')' found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E040] Syntax Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\ControllerAPI.scala:108:8 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m108 |[0m        }[0m
+[0m[[0m[31merror[0m] [0m[0m    |        [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m    |        unindent expected, but '}' found[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

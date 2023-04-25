@@ -26,8 +26,11 @@ import model.stateComponent.stateBaseImpl.PlayerTurnState
 
 class FileIO extends FileIOInterface:
 
-    override def load : Game = 
+    override def load : Game =
+        print("trying to get STring from file")
         val source: String = Source.fromFile("game.json").getLines.mkString
+        print("got json from file")
+
         val json: JsValue = Json.parse(source)
         GameStateContext.setState(PlayerTurnState((json \ "turn").as[Int], (json \ "maxplayer").as[Int]))
         var p1cards : CardsInterface = Cards(Set.empty[CardInterface])
@@ -59,6 +62,8 @@ class FileIO extends FileIOInterface:
                   case Success(c) => boardc = boardc.add(c)
                   case Failure(e) =>)
         PvPGame(Vector(p1cards, p2cards), boardc, msg)
+
+       
 
     override def jsontoGame(data:String): Game =
         

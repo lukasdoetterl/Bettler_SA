@@ -6,11 +6,13 @@ import scala.swing.Swing.LineBorder
 import de.htwg.se.bettler.controller.ControllerInterface
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
 import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
-import de.htwg.se.bettler.model.cardComponent._
-import scala.swing._
-import scala.swing.event._
+import de.htwg.se.bettler.model.cardComponent.*
+import akka.http.scaladsl.server.PathMatcher.Lift.MOps.OptionMOps
+
+import scala.swing.*
+import scala.swing.event.*
 import scala.swing.Swing.LineBorder
-import scala.io.Source._
+import scala.io.Source.*
 import javax.swing.border.Border
 import java.awt.Color
 import javax.swing.JButton
@@ -29,17 +31,21 @@ import javax.swing.JCheckBox
 import scala.util.Success
 import scala.util.Failure
 import javax.swing.WindowConstants.EXIT_ON_CLOSE
-
 import scala.swing.Publisher
 import scala.swing.event.Event
 import de.htwg.se.bettler.controller.CloseEvent
 import de.htwg.se.bettler.controller.GameChanged
+import de.htwg.se.bettler.util.Observer
+import aview.gui.UIRequest
+
+import java.util.Observable
 import javax.swing.JLabel
 
 
-class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
+class SwingGui() extends Frame with Observer{
+    var controller = new UIRequest()
+    controller.add(this)
     var cardsSelected = Set.empty[CardInterface]
-    listenTo(controller)
     peer.setDefaultCloseOperation(EXIT_ON_CLOSE)
     reactions += {
         case e : CloseEvent => this.close()
@@ -50,14 +56,14 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
     contents += new Menu("Option") {
         mnemonic = Key.F
         contents += new MenuItem(Action("New PvP") {
-            controller.doAndNotify(controller.newGame, "pvp")
+            controller.newGame("pvp")
         })
         contents += new MenuItem(Action("New PvE") {
-            controller.doAndNotify(controller.newGame, "pve")
+            controller.newGame( "pve")
         })
     
     
-        contents += new MenuItem(Action("Quit") {controller.exit})
+        contents += new MenuItem(Action("Quit") {})
         }
     }
     visible = true
@@ -91,12 +97,12 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
 
         reactions +={
             case ButtonClicked(`playButton`) => 
-                controller.doAndNotify(controller.play, Cards(cardsSelected))
+                controller.play(Cards(cardsSelected).toString)
                 cardsSelected = Set.empty[CardInterface]
-            case ButtonClicked(`skipButton`) => controller.doAndNotify(controller.skip)
-            case ButtonClicked(`undoButton`) => controller.undo
-            case ButtonClicked(`redoButton`) => controller.redo
-            case ButtonClicked(`nextRoundButton`) => controller.doAndNotify(controller.nextRound)
+            case ButtonClicked(`skipButton`) => controller.skip()
+            case ButtonClicked(`undoButton`) => controller.undo()
+            case ButtonClicked(`redoButton`) => controller.redo()
+            case ButtonClicked(`nextRoundButton`) => controller.newGame("pvp")
         }
 
     
@@ -149,8 +155,8 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
             listenTo(startButton)
             listenTo(startButton2)
             reactions += {
-            case ButtonClicked(`startButton`) => controller.doAndNotify(controller.newGame, "pvp")
-            case ButtonClicked(`startButton2`) => controller.doAndNotify(controller.newGame, "pve")
+            case ButtonClicked(`startButton`) => controller.newGame( "pvp")
+            case ButtonClicked(`startButton2`) => controller.newGame( "pve")
             }
 
         contents += boxpanelTitle
@@ -160,14 +166,18 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
 
 
     def redraw: Unit =
-        if !controller.returnGame.isDefined then
-            contents = mainMenuPanel               
-            return
+
+
         contents = new GridPanel(5,1):
-            contents += new Label(controller.returnGame.get.getMessage())
-            contents += showCards(controller.returnGame.get.getPlayers()(1))  
-            contents += showCards(controller.returnGame.get.getBoard())
-            contents += showCards(controller.returnGame.get.getPlayers()(0))
+
+            contents += new Label(controller.game.getMessage())
+            contents += showCards(controller.game.getPlayers()(1))
+            contents += showCards(controller.game.getBoard())
+            contents += showCards(controller.game.getPlayers()(0))
             contents += buttonPanel
         repaint()
+
+    def update: Unit =
+        print("update")
+        //redraw
 }

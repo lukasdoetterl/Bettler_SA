@@ -1,11 +1,17 @@
-[0m[[0m[31merror[0m] [0m[0merror while loading $throws$package$,[0m
-[0m[[0m[31merror[0m] [0m[0mclass file scala/runtime/$throws$package.class is broken, reading aborted with class dotty.tools.tasty.UnpickleException[0m
-[0m[[0m[31merror[0m] [0m[0mTASTy signature has wrong version.[0m
-[0m[[0m[31merror[0m] [0m[0m expected: {majorVersion: 28, minorVersion: 0}[0m
-[0m[[0m[31merror[0m] [0m[0m found   : {majorVersion: 28, minorVersion: 1}[0m
-[0m[[0m[31merror[0m] [0m[0m[0m
-[0m[[0m[31merror[0m] [0m[0mThis TASTy file was produced by a more recent, forwards incompatible release.[0m
-[0m[[0m[31merror[0m] [0m[0mTo read this TASTy file, please upgrade your tooling.[0m
-[0m[[0m[31merror[0m] [0m[0mThe TASTy file was produced by Scala 3.1.3-bin-nonbootstrapped.[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E008] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\main\scala\de\htwg\se\bettler\model\gameComponent\Game.scala:6:26 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m6 |[0m[33mimport[0m de.htwg.se.bettler.util.*[0m
+[0m[[0m[31merror[0m] [0m[0m  |       [31m^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  |       value util is not a member of de.htwg.se.bettler[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E008] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\main\scala\de\htwg\se\bettler\model\gameComponent\pveGameImpl\PvEGame.scala:9:26 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m9 |[0m[33mimport[0m de.htwg.se.bettler.util.*[0m
+[0m[[0m[31merror[0m] [0m[0m  |       [31m^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  |       value util is not a member of de.htwg.se.bettler[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E135] Type Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\main\scala\de\htwg\se\bettler\model\gameComponent\pveGameImpl\PvEGame.scala:84:17 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m84 |[0m            [33mcase[0m None => [0m
+[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |Stable identifier required, but [35m<error value util is not a member of de.htwg.se.bettler>[0m#[35mNone[0m found[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E008] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\main\scala\de\htwg\se\bettler\model\gameComponent\pvpGameImpl\PvPGame.scala:9:26 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m9 |[0m[33mimport[0m de.htwg.se.bettler.util.*[0m
+[0m[[0m[31merror[0m] [0m[0m  |       [31m^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  |       value util is not a member of de.htwg.se.bettler[0m
+[0m[[0m[31merror[0m] [0m[0mfour errors found[0m

@@ -1,2 +1,5 @@
-[debug] Acquiring lock on file C:\Users\lukas\IdeaProjects\Bettler_SA\project\target\.sbt-compilation-infos\bettler-view-compile\.sbt-idea-lock ...
-[debug] Releasing lock on file C:\Users\lukas\IdeaProjects\Bettler_SA\project\target\.sbt-compilation-infos\bettler-view-compile\.sbt-idea-lock.
+[0m[[0m[31merror[0m] [0m[0m[31m-- Error: C:\Users\lukas\IdeaProjects\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\gui\SwingGui.scala:44:6 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m44 |[0m[33mclass[0m [35mSwingGui[0m() [33mextends[0m [35mFrame[0m [33mwith[0m  [35mObserver[0m{[0m
+[0m[[0m[31merror[0m] [0m[0m   |      [31m^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |class SwingGui needs to be abstract, since def update: Unit in [33mtrait[0m [35mObserver[0m in [33mpackage[0m [35mde.htwg.se.bettler.util[0m is not defined [0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
