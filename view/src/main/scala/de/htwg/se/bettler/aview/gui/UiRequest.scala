@@ -49,7 +49,7 @@ class Request extends Observable{
             this.game = fileio.jsontoGame(jsonStr)
           }
         case _ =>
-          Future.failed(new RuntimeException(s"HTTP request failed with status ${response.status} and entity ${response.entity}"))
+          Future.failed(new RuntimeException(s"Failed : ${response.status} ${response.entity}"))
       }
     }
     Await.result(res, 10.seconds)
