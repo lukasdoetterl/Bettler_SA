@@ -9,7 +9,7 @@ import akka.stream.Materializer
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class WebClient(serverUri: String)(implicit system: ActorSystem, mat: Materializer) {
+class Client(serverUri: String)(implicit system: ActorSystem, mat: Materializer) {
 
   private val http = Http()
 

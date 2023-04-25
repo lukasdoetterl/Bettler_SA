@@ -50,7 +50,7 @@ import play.api.libs.json.*
 
 
 class ControllerAPI(controller: ControllerInterface):
-  
+
 
   implicit def start(): Unit = {
     val binding = Http().newServerAt("localhost", RestUIPort).bind(route)
@@ -102,7 +102,7 @@ class ControllerAPI(controller: ControllerInterface):
         path("controller" / "test") {
           fileIO.save(controller.returnGame.get)
           print("get completed")
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, (controller.returnGame.get.getBoard()).toString()))
+          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, (controller.returnGame.get.getBoard()).toString))
         }
       },
       get {

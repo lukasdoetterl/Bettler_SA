@@ -4,18 +4,22 @@ package controllerBaseImp
 
 import com.google.inject.name.Names
 import com.google.inject.{Guice, Inject}
-
+import de.htwg.se.bettler.fileIOComponent.fileIOJson.FileIO
 import model.gameComponent.Game
-import model.cardComponent._
-import util._
+import model.cardComponent.*
+import util.*
+
 import scala.swing.Publisher
 import scala.swing.event.Event
-import model._
-import fileIOComponent._
-import net.codingwell.scalaguice.InjectorExtensions._
+import model.*
+import fileIOComponent.*
+import net.codingwell.scalaguice.InjectorExtensions.*
+import fileIOComponent.*
+
 
 case class Controller(var game : Option[Game]) extends ControllerInterface:
     val undomanager = util.UndoManager()
+    val fileIO = new FileIO
     override def toString = 
         game match
             case Some(g) => g.toString
@@ -108,7 +112,5 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
             //case Some(g) => Guice.createInjector(new BettlerModule).getInstance(classOf[FileIOInterface]).save(g)
             case _=> return
     def load : Unit =
-        //game = Some(Guice.createInjector(new BettlerModule).getInstance(classOf[FileIOInterface]).load)
-        game = None
-        notifyObservers
-        publish(new GameChanged())
+        game match
+            case None => return

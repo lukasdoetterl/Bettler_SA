@@ -10,6 +10,10 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler[0m
 [0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\Client.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\Client.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\Client.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\Client.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\CloseEvent.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\CloseEvent.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\CloseEvent.tasty[0m
@@ -38,12 +42,8 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\GameChanged.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\GameChanged.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\GameChanged.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\PersistenceRequest.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\PersistenceRequest.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\PersistenceRequest.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\PersistenceRequest.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\WebClient.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\WebClient.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\WebClient.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\WebClient.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\pRequest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\pRequest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\pRequest.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\pRequest.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

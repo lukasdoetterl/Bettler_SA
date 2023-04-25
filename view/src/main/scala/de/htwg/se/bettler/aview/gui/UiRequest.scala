@@ -30,23 +30,23 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.swing.Reactor
 
 
-class UIRequest extends Observable{
+class Request extends Observable{
 
-  val fio = new FileIO()
+  val fileio = new FileIO()
   var game: Game = Game()
   implicit val system: ActorSystem = ActorSystem()
   implicit val mat: Materializer = SystemMaterializer(system).materializer
 
 
 
-  val webClient = new WebClient("http://localhost:8080/controller/")
+  val webClient = new Client("http://localhost:8080/controller/")
 
   def waitRefreshGame(resulti: Future[HttpResponse]) = {
     val res = resulti.flatMap { response =>
       response.status match {
         case StatusCodes.OK =>
           Unmarshal(response.entity).to[String].map { jsonStr =>
-            this.game = fio.jsontoGame(jsonStr)
+            this.game = fileio.jsontoGame(jsonStr)
           }
         case _ =>
           Future.failed(new RuntimeException(s"HTTP request failed with status ${response.status} and entity ${response.entity}"))
@@ -82,7 +82,7 @@ class UIRequest extends Observable{
 
   def save(): Unit = {
     val endpoint = "save"
-    val postResponse = webClient.postRequest(fio.gametoJson(this.game).toString(), endpoint)
+    val postResponse = webClient.postRequest(fileio.gametoJson(this.game).toString(), endpoint)
     waitRefreshGame(postResponse)
   }
 
@@ -100,7 +100,7 @@ class UIRequest extends Observable{
 
   def skip(): Unit = {
     val endpoint = "skip"
-    val postResponse = webClient.postRequest(fio.gametoJson(this.game).toString(), endpoint)
+    val postResponse = webClient.postRequest(fileio.gametoJson(this.game).toString(), endpoint)
     waitRefreshGame(postResponse)
   }
   

@@ -67,10 +67,10 @@ class RestAPIPersistence():
 
     binding.onComplete {
       case Success(binding) => {
-        println(s"UNO PersistenceAPI service online at http://localhost:$RestUIPort/")
+        println(s"persitancec api online at ::$RestUIPort/")
       }
       case Failure(exception) => {
-        println(s"UNO PersistenceAPI service failed to start: ${exception.getMessage}")
+        println(s"Persitencd Api Fail ${exception.getMessage}")
       }
     }
   }

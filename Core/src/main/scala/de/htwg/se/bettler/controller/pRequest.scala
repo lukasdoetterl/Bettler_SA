@@ -1,7 +1,7 @@
 package de.htwg.se.bettler
 package controller
 
-import de.htwg.se.bettler.controller.WebClient
+import de.htwg.se.bettler.controller.Client
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import akka.actor.typed.scaladsl.Behaviors
 import akka.http.scaladsl.Http
@@ -29,24 +29,24 @@ import de.htwg.se.bettler.fileIOComponent.fileIOJson.FileIO
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-class PersistenceRequest {
-  val fio = new FileIO()
-
-  implicit val system: ActorSystem = ActorSystem()
+class pRequest {
+  val fileIO = new FileIO()
   implicit val mat: Materializer = SystemMaterializer(system).materializer
+  implicit val system: ActorSystem = ActorSystem()
 
-  val webClient = new WebClient("http://localhost:8081/persistence/")
 
-  def loadGame(resulti: Future[HttpResponse]): String = {
+  val webClient = new Client("http://localhost:8081/persistence/")
+
+  def loadGame(results: Future[HttpResponse]): String = {
     var resJSON = ""
-    val res = resulti.flatMap { response =>
+    val res = results.flatMap { response =>
       response.status match {
         case StatusCodes.OK =>
           Unmarshal(response.entity).to[String].map { jsonStr =>
             resJSON = jsonStr
           }
         case _ =>
-          Future.failed(new RuntimeException(s"HTTP request failed with status ${response.status} and entity ${response.entity}"))
+          Future.failed(new RuntimeException(s"Fail${response.status} : ${response.entity}"))
       }
     }
     Await.result(res, 10.seconds)
@@ -56,15 +56,15 @@ class PersistenceRequest {
 
   def save(game: Game): Unit = {
     val endpoint = "store"
-    val putResponse = webClient.putRequest(fio.gametoJson(game).toString(), endpoint)
+    val putResponse = webClient.putRequest(fileIO.gametoJson(game).toString(), endpoint)
     val res = putResponse.flatMap { response =>
       response.status match {
         case StatusCodes.OK =>
           Unmarshal(response.entity).to[String].map { entity =>
-            println(s"Request completed successfully with status ${response.status} and content:\n${entity}")
+            println(s"Sucess : ${response.status} with:\n${entity}")
           }
         case _ =>
-          Future.failed(new RuntimeException(s"HTTP request failed with status ${response.status} and entity ${response.entity}"))
+          Future.failed(new RuntimeException(s"Fail : ${response.status} with ${response.entity}"))
       }
     }
     Await.result(res, 10.seconds)

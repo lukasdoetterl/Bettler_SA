@@ -15,16 +15,16 @@ import scala.language.postfixOps
 
 
 @main def Main: Unit =
-  
+
   val injector = Guice.createInjector(new BettlerModule)
-  
+
   val persistenceApi = RestAPIPersistence()
   val controllerAPI = ControllerAPI(injector.getInstance(classOf[ControllerInterface]))
-  
+
   controllerAPI.start()
   persistenceApi.start()
   val tui = TUI(injector.getInstance(classOf[ControllerInterface]))
   val gui = SwingGui()
-  
+
   tui.run
 

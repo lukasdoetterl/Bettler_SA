@@ -1,9 +1,7 @@
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E040] Syntax Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\ControllerAPI.scala:107:112 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m107 |[0m          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, controller.returnGame.get.getBoard().toString())))[0m
-[0m[[0m[31merror[0m] [0m[0m    |                                                                                                                [31m^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m    |                                           '}' expected, but ')' found[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E040] Syntax Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\ControllerAPI.scala:108:8 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m108 |[0m        }[0m
-[0m[[0m[31merror[0m] [0m[0m    |        [31m^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m    |        unindent expected, but '}' found[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m-- [E029] Pattern Match Exhaustivity Warning: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:115:8 [0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m115 |[0m        game [33mmatch[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |        [33m^^^^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |        [33mmatch[0m may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |        It would fail on pattern case: Some(_)[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m

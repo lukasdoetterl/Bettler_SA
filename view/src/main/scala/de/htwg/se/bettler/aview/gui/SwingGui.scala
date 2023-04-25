@@ -36,14 +36,14 @@ import scala.swing.event.Event
 import de.htwg.se.bettler.controller.CloseEvent
 import de.htwg.se.bettler.controller.GameChanged
 import de.htwg.se.bettler.util.Observer
-import aview.gui.UIRequest
+import aview.gui.Request
 
 import java.util.Observable
 import javax.swing.JLabel
 
 
 class SwingGui() extends Frame with Observer{
-    var controller = new UIRequest()
+    var controller = new Request()
     controller.add(this)
     var cardsSelected = Set.empty[CardInterface]
     peer.setDefaultCloseOperation(EXIT_ON_CLOSE)
