@@ -1,2 +1,6 @@
-[debug] Acquiring lock on file C:\Users\lukas\IdeaProjects\Bettler_SA\project\target\.sbt-compilation-infos\bettler-Tools-test\.sbt-idea-lock ...
-[debug] Releasing lock on file C:\Users\lukas\IdeaProjects\Bettler_SA\project\target\.sbt-compilation-infos\bettler-Tools-test\.sbt-idea-lock.
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Tools\src\test\scala\de\htwg\se\bettler\model\fileIOComponent\fileIOXml\FileIOXSpec.scala:16:25 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m16 |[0m        [33mval[0m [36mfileIO[0m = [33mnew[0m [35mFileIO[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                         [31m^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                         Not found: type FileIO[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -1,11 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.PlayCommandSpec, org.scalatest.tools.Framework$$anon$1@439772a1, false, [SuiteSelector])[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec, org.scalatest.tools.Framework$$anon$1@439772a1, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mPlayCommandSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mA PlayCommand[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should save a memento of a game from an controller and a state[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method doStep which sets the memento to the current game and state[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method undoStep which saves the current game and state in the memento and overrides the game and state with the previous values from the memento[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method redoStep which saves the current game and state in the memento and overrides the game and state with the previous values from the memento[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec, org.scalatest.tools.Framework$$anon$1@1f494ac8, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mcontrollerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mController[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method play, that returns a Game[0m[0m
@@ -17,11 +10,18 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to start the Next Round[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to undo a turn[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should have a method to redo a turn[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 273 milliseconds.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(de.htwg.se.bettler.controller.PlayCommandSpec, org.scalatest.tools.Framework$$anon$1@1f494ac8, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPlayCommandSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mA PlayCommand[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should save a memento of a game from an controller and a state[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method doStep which sets the memento to the current game and state[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method undoStep which saves the current game and state in the memento and overrides the game and state with the previous values from the memento[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should have a method redoStep which saves the current game and state in the memento and overrides the game and state with the previous values from the memento[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 857 milliseconds.[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 13[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 13, failed 0, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec[0m
 [0m[[0m[0mdebug[0m] [0m[0m	de.htwg.se.bettler.controller.PlayCommandSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de.htwg.se.bettler.controller.controllerBaseImp.controllerSpec[0m

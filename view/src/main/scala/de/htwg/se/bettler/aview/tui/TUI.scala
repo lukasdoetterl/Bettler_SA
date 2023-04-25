@@ -51,6 +51,10 @@ class TUI(controller : ControllerInterface) extends Observer with Reactor:
             case "save" => controller.save
             case "load" => controller.load
             case _ =>
+                if !input.isInstanceOf[String]
+                    then return
+                else
+
                 if input.startsWith("play") then
                     if !GameStateContext.getState().isInstanceOf[PlayerTurnState] then
                         println("Start a game first.")

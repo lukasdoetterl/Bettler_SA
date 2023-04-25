@@ -11,7 +11,7 @@ import util._
 import scala.swing.Publisher
 import scala.swing.event.Event
 import model._
-import de.htwg.se.bettler.model.fileIOComponent.FileIOInterface
+import fileIOComponent._
 import net.codingwell.scalaguice.InjectorExtensions._
 
 case class Controller(var game : Option[Game]) extends ControllerInterface:

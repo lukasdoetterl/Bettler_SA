@@ -12,11 +12,11 @@ import model.gameComponent.pvpGameImpl._
 import model.cardComponent._
 import model.cardComponent.cardBaseImpl._
 import java.util.ResourceBundle.Control
-import model.fileIOComponent.FileIOInterface
-import model.fileIOComponent._
+import fileIOComponent.FileIOInterface
+import fileIOComponent._
 
 class BettlerModule extends AbstractModule:
     override def configure() = {
         bind(classOf[ControllerInterface]).toInstance(Controller(None))
-        bind(classOf[FileIOInterface]).toInstance(fileIOJson.FileIO())
+        //bind(classOf[FileIOInterface]).toInstance(fileIOJson.FileIO())
     }

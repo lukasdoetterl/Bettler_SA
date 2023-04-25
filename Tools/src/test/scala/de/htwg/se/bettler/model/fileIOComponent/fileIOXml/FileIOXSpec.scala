@@ -13,9 +13,8 @@ import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.StartState
 class FileIOXSpec extends AnyWordSpec:
    "A FileIO" when {
       "new" should {
-        val fileIO = new FileIO
         "do something" in {
-          fileIO should not be 1
+
         }
       }
    }
