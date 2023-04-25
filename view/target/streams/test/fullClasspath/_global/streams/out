@@ -1,18 +1,18 @@
-[0m[[0m[0minfo[0m] [0m[0mInstrumenting 16 classes to C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\jacoco\instrumented-classes[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting products: C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$10.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$11.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$12.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$13.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$2.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$3.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$4.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$5.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$6.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$7.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$8.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$9.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\gui\SwingGui.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\tui\TUI$$anon$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.0.2\classes\de\htwg\se\bettler\aview\tui\TUI.class[0m
+[0m[[0m[0minfo[0m] [0m[0mInstrumenting 16 classes to C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\jacoco\instrumented-classes[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting products: C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$10.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$11.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$12.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$13.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$8.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui$$anon$9.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\gui\SwingGui.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\tui\TUI$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\view\target\scala-3.1.2\classes\de\htwg\se\bettler\aview\tui\TUI.class[0m
