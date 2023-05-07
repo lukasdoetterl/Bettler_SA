@@ -11,11 +11,13 @@ import util._
 import scala.swing.Publisher
 import scala.swing.event.Event
 import model._
-import fileIOComponent._
 import net.codingwell.scalaguice.InjectorExtensions._
+import de.htwg.se.bettler.fileIOComponent.fileIOJson.FileIO
+
 
 case class Controller(var game : Option[Game]) extends ControllerInterface:
     val undomanager = util.UndoManager()
+    val fileIO = new FileIO
     override def toString = 
         game match
             case Some(g) => g.toString
@@ -105,10 +107,9 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
 
     def save : Unit =
         game match
-            //case Some(g) => Guice.createInjector(new BettlerModule).getInstance(classOf[FileIOInterface]).save(g)
+            case Some(g) => fileIO.save(g)
             case _=> return
     def load : Unit =
-        //game = Some(Guice.createInjector(new BettlerModule).getInstance(classOf[FileIOInterface]).load)
-        game = None
+        game = Some(fileIO.load)
         notifyObservers
         publish(new GameChanged())

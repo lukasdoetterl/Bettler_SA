@@ -6,10 +6,13 @@ import de.htwg.se.bettler.controller.controllerBaseImp._
 import model.gameComponent.Game
 import aview.tui._
 import aview.gui._
+import de.htwg.se.bettler.fileIOComponent._
 
 @main def Main: Unit =
   val injector = Guice.createInjector(new BettlerModule)
   val controller = injector.getInstance(classOf[ControllerInterface])
   val tui = TUI(controller)
   val gui = SwingGui(controller)
+  val fileIOService = RestAPIPersistence()
+  fileIOService.start()
   tui.run

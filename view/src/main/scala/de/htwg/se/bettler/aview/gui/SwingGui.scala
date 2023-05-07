@@ -74,6 +74,8 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
         val undoButton = new Button("Undo")
         val redoButton = new Button("Redo")
         val nextRoundButton = new Button("Next Round")
+        val loadButton = new Button("Load")
+        val saveButton = new Button("Save")
         val input = new TextArea("") 
         
         contents += input
@@ -82,12 +84,16 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
         contents += undoButton 
         contents += redoButton
         contents += nextRoundButton
+        contents += loadButton
+        contents += saveButton
         listenTo(input)       
         listenTo(playButton)
         listenTo(skipButton)
         listenTo(undoButton)
         listenTo(redoButton)
         listenTo(nextRoundButton)
+        listenTo(loadButton)
+        listenTo(saveButton)
 
         reactions +={
             case ButtonClicked(`playButton`) => 
@@ -97,6 +103,8 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
             case ButtonClicked(`undoButton`) => controller.undo
             case ButtonClicked(`redoButton`) => controller.redo
             case ButtonClicked(`nextRoundButton`) => controller.doAndNotify(controller.nextRound)
+            case ButtonClicked(`loadButton`) => controller.load
+            case ButtonClicked(`saveButton`) => controller.save
         }
 
     
@@ -161,8 +169,8 @@ class SwingGui(controller: ControllerInterface) extends Frame with Reactor{
 
     def redraw: Unit =
         if !controller.returnGame.isDefined then
-            contents = mainMenuPanel               
-            return
+            contents = mainMenuPanel
+                    return
         contents = new GridPanel(5,1):
             contents += new Label(controller.returnGame.get.getMessage())
             contents += showCards(controller.returnGame.get.getPlayers()(1))  

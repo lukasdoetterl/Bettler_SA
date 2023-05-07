@@ -1,5 +1,5 @@
 import dependencies._
-val scala3Version = "3.0.2"
+val scala3Version = "3.1.2"
 parallelExecution in Test := false
 fork := true
 concurrentRestrictions in Global += Tags.limit(Tags.Test, 1)
