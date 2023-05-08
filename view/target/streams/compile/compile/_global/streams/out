@@ -1,15 +1,9 @@
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\gui\SwingGui.scala:87:8 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m87 |[0m        contenets += loadButton[0m
-[0m[[0m[31merror[0m] [0m[0m   |        [31m^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |        Not found: contenets[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E007] Type Mismatch Error: C:\Users\lukas\IdeaProjects\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\gui\SwingGui.scala:106:82 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m106 |[0m            [33mcase[0m ButtonClicked(`loadButton`) => controller.doAndNotify(controller.load)[0m
-[0m[[0m[31merror[0m] [0m[0m    |                                                                       [31m^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m    |   Found:    Unit[0m
-[0m[[0m[31merror[0m] [0m[0m    |   Required: () => Option[de.htwg.se.bettler.model.gameComponent.Game][0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- [E007] Type Mismatch Error: C:\Users\lukas\IdeaProjects\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\gui\SwingGui.scala:107:82 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m107 |[0m            [33mcase[0m ButtonClicked(`saveButton`) => controller.doAndNotify(controller.save)[0m
-[0m[[0m[31merror[0m] [0m[0m    |                                                                       [31m^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m    |   Found:    Unit[0m
-[0m[[0m[31merror[0m] [0m[0m    |   Required: () => Option[de.htwg.se.bettler.model.gameComponent.Game][0m
-[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m-- Warning: C:\Users\lukas\IdeaProjects\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\tui\TUIRest.scala:125:14 [0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m125 |[0m              [33mval[0m [36mresult[0m = getRequest([31m"play?p1="[0m + x )[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |              [33m^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |             Line is indented too far to the left, or a `}` is missing[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m-- Warning: C:\Users\lukas\IdeaProjects\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\tui\TUIRest.scala:126:14 [0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m126 |[0m              waitRefreshGame(result)[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |              [33m^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |             Line is indented too far to the left, or a `}` is missing[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

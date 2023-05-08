@@ -2,22 +2,69 @@ package de.htwg.se.bettler
 package controller
 package controllerBaseImp
 
+import akka.actor.ActorSystem
+import akka.actor.typed.scaladsl.Behaviors
+import akka.http.javadsl.model.{StatusCodes, Uri}
+import akka.http.scaladsl.Http
+import akka.http.scaladsl.model.*
+import akka.http.scaladsl.model.headers.*
+import akka.http.scaladsl.server.Directives.*
+import akka.http.scaladsl.server.{ExceptionHandler, Route}
+import akka.http.scaladsl.unmarshalling.Unmarshal
+import akka.stream.{ActorMaterializer, Materializer, SystemMaterializer}
 import com.google.inject.name.Names
 import com.google.inject.{Guice, Inject}
-
-import model.gameComponent.Game
-import model.cardComponent._
-import util._
-import scala.swing.Publisher
-import scala.swing.event.Event
-import model._
-import net.codingwell.scalaguice.InjectorExtensions._
 import de.htwg.se.bettler.fileIOComponent.fileIOJson.FileIO
+import de.htwg.se.bettler.model.*
+import de.htwg.se.bettler.model.cardComponent.*
+import de.htwg.se.bettler.model.gameComponent.Game
+import de.htwg.se.bettler.util.*
+import net.codingwell.scalaguice.InjectorExtensions.*
+
+
+import java.nio.charset.StandardCharsets
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, ExecutionContextExecutor, Future}
+import scala.swing.{Publisher, Reactor}
+import scala.swing.event.Event
+import scala.sys.process.*
+
 
 
 case class Controller(var game : Option[Game]) extends ControllerInterface:
+
+
     val undomanager = util.UndoManager()
     val fileIO = new FileIO
+    implicit val system: ActorSystem = ActorSystem()
+    implicit val mat: Materializer = SystemMaterializer(system).materializer
+
+    val serverUri = s"http://localhost:8089/persistence/"
+    private val http = Http()
+
+    def getRequest(path: String): Future[HttpResponse] = {
+        val request = HttpRequest(
+            method = HttpMethods.GET,
+            uri = serverUri + path
+        )
+        http.singleRequest(request)
+    }
+
+    def waitRefreshGame(resulti: Future[HttpResponse]): Unit = {
+        val res = resulti.flatMap { response =>
+            response.status match {
+                case StatusCodes.OK =>
+                    Unmarshal(response.entity).to[String].map { string =>
+                        println(string.toString)
+                    }
+                case _ =>
+                    Future.failed(new RuntimeException(s"HTTP request failed with status ${response.status} and entity ${response.entity}"))
+            }
+        }
+        Await.result(res, 10.seconds)
+
+    }
     override def toString = 
         game match
             case Some(g) => g.toString
@@ -107,9 +154,12 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
 
     def save : Unit =
         game match
-            case Some(g) => fileIO.save(g)
+            case Some(g) =>
+                val result = getRequest("save")
             case _=> return
     def load : Unit =
+        val result = getRequest("skip")
+        waitRefreshGame(result)
         game = Some(fileIO.load)
         notifyObservers
         publish(new GameChanged())

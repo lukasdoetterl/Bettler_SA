@@ -1,1 +1,41 @@
-[0m[[0m[0mdebug[0m] [0m[0mJar uptodate: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\bettler-core_3-0.1.0-SNAPSHOT.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\bettler-core_3-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\CloseEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\CloseEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\CloseEvent.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\CloseEvent.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\Controller$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\Controller$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\Controller.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\Controller.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\Controller.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\Controller.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\ControllerRestAPI.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\ControllerRestAPI.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\ControllerRestAPI.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\ControllerRestAPI.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\PlayCommand.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\PlayCommand.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\controllerBaseImp\PlayCommand.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\PlayCommand.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\ControllerInterface.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\ControllerInterface.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\ControllerInterface.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\ControllerInterface.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\GameChanged.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\GameChanged.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	de\htwg\se\bettler\controller\GameChanged.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.1.2\classes\de\htwg\se\bettler\controller\GameChanged.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
