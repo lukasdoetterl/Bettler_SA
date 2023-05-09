@@ -37,7 +37,7 @@ lazy val core: Project = Project(id = "bettler-Core", base = file("Core"))
 
     libraryDependencies ++= akkaDependencies,
 
-  )
+  ).enablePlugins(JavaAppPackaging, DockerPlugin)
   .enablePlugins(JacocoCoverallsPlugin)
 parallelExecution in Test := false
 
@@ -55,7 +55,7 @@ lazy val view: Project = Project(id = "bettler-view", base = file("view"))
 
 
 
-  )
+  ).enablePlugins(JavaAppPackaging, DockerPlugin)
   .enablePlugins(JacocoCoverallsPlugin)
 parallelExecution in Test := false
 
@@ -66,7 +66,7 @@ lazy val persistence: Project = Project(id = "bettler-Persistence", base = file(
       version := "0.1.0-SNAPSHOT",
 
       scalaVersion := scala3Version,
-  )
+  ).enablePlugins(JavaAppPackaging, DockerPlugin)
   .enablePlugins(JacocoCoverallsPlugin)
 
 
@@ -80,7 +80,7 @@ lazy val tools: Project = Project(id = "bettler-Tools", base = file("Tools"))
 
     libraryDependencies ++= akkaDependencies
 
-  )
+  ).enablePlugins(JavaAppPackaging, DockerPlugin)
   .enablePlugins(JacocoCoverallsPlugin)
 parallelExecution in Test := false
 
@@ -98,7 +98,7 @@ lazy val root: Project = Project(id = "bettler", base = file("."))
     libraryDependencies ++= akkaDependencies,
 
 
-  )
+  ).enablePlugins(JavaAppPackaging, DockerPlugin)
   .enablePlugins(JacocoCoverallsPlugin)
 
 
