@@ -69,21 +69,9 @@ lazy val persistence: Project = Project(id = "bettler-Persistence", base = file(
   )
   .enablePlugins(JacocoCoverallsPlugin)
 
-lazy val cardgeneration: Project = Project(id = "bettler-cardgeneration", base = file("Cardgenerating"))
-  .dependsOn()
-  .settings(
-    name := "bettler-Persistence",
-    version := "0.1.0-SNAPSHOT",
-
-    scalaVersion := scala3Version,
-
-    libraryDependencies ++= akkaDependencies,
-  )
-  .enablePlugins(JacocoCoverallsPlugin)
-parallelExecution in Test := false
 
 lazy val tools: Project = Project(id = "bettler-Tools", base = file("Tools"))
-  .dependsOn(cardgeneration)
+  .dependsOn()
   .settings(
     name := "bettler-Tools",
     version := "0.1.0-SNAPSHOT",
@@ -97,8 +85,8 @@ lazy val tools: Project = Project(id = "bettler-Tools", base = file("Tools"))
 parallelExecution in Test := false
 
 lazy val root: Project = Project(id = "bettler", base = file("."))
-  .dependsOn(core, tools, view, persistence, cardgeneration)
-  .aggregate(core, tools, view, persistence, cardgeneration)
+  .dependsOn(core, tools, view, persistence)
+  .aggregate(core, tools, view, persistence)
   .settings(
     name := "bettler",
     version := "0.1.0-SNAPSHOT",

@@ -7,7 +7,6 @@ import model.gameComponent.Game
 import aview.tui._
 import aview.gui._
 import de.htwg.se.bettler.fileIOComponent._
-import de.htwg.se.bettler.cardgenerating._
 import de.htwg.se.bettler.controller._
 
 @main def Main: Unit =
@@ -18,9 +17,7 @@ import de.htwg.se.bettler.controller._
 
   //val gui = SwingGui(controller)
   val fileIOService = RestAPIPersistence()
-  val cardgeneration = RestAPIcardgenerating()
   val controllerService = ControllerRestAPI(controller)
-  cardgeneration.start()
   fileIOService.start()
   controllerService.start()
   tui.run
