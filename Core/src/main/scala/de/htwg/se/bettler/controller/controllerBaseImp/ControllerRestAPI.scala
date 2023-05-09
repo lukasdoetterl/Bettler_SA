@@ -29,7 +29,7 @@ class ControllerRestAPI(controller:ControllerInterface):
   implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "my-system")
   implicit val executionContext: ExecutionContextExecutor = system.executionContext
 
-  val RestUIPort = 8089
+  val RestUIPort = 8080
   val routes: String =
     """
          """.stripMargin
