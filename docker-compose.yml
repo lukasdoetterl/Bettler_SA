@@ -2,19 +2,16 @@ version: "3.9"
 
 services:
   persistence:
-    image: hseeberger/scala-sbt:17.0.2_1.6.2_3.1.1
+    image: bettler-persistence:0.1.0-SNAPSHOT
     ports:
       - "8081:8081"
     stdin_open: true
     tty: true
     container_name: thepersistence
-    environment:
-      PERSISTENCE_SERVICE_HOST: thepersistence
-      PERSISTENCE_SERVICE_PORT: 8081
 
 
   core:
-    image: hseeberger/scala-sbt:17.0.2_1.6.2_3.1.1
+    image: bettler-core:0.1.0-SNAPSHOT
     ports:
       - "8080:8080"
     stdin_open: true
@@ -22,25 +19,19 @@ services:
     container_name: thecore
     depends_on:
       - persistence
-    environment:
-      CORE_SERVICE_HOST: thecore
-      CORE_SERVICE_PORT: 8080
-      PERSISTENCE_SERVICE_HOST: thepersistence
-      PERSISTENCE_SERVICE_PORT: 8081
 
   tui:
-    image: hseeberger/scala-sbt:17.0.2_1.6.2_3.1.1
+    image: bettler-view:0.1.0-SNAPSHOT
+    ports:
+      - "8080:8080"
     stdin_open: true
     tty: true
     container_name: theview
     depends_on:
       - core
-    environment:
-      CORE_SERVICE_HOST: theview
-      CORE_SERVICE_PORT: 8080
 
   sa-bettler:
-    image: hseeberger/scala-sbt:17.0.2_1.6.2_3.1.1
+    image: bettler:0.1.0-SNAPSHOT
     ports:
       - "8082:8082"
     stdin_open: true

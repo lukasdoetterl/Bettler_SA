@@ -1,1 +1,1 @@
-FROM hseeberger/scala-sbt:17.0.2_1.6.2_3.1.1
+FROM bettler-core:0.1.0-SNAPSHOT
