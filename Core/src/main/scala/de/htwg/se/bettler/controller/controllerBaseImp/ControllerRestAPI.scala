@@ -101,7 +101,7 @@ class ControllerRestAPI(controller:ControllerInterface):
 
 
   def start(): Unit = {
-    val binding = Http().newServerAt("0.0.0.0", RestUIPort).bind(route)
+    val binding = Http().newServerAt("thecore", RestUIPort).bind(route)
 
     binding.onComplete {
       case Success(binding) => {

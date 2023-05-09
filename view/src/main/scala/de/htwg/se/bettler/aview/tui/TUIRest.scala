@@ -53,7 +53,7 @@ class TUIRest() extends Observer:
   implicit val system: ActorSystem = ActorSystem()
   implicit val mat: Materializer = SystemMaterializer(system).materializer
 
-  val serverUri = s"http://0.0.0.0:8080/controller/"
+  val serverUri = s"http://thecore:8080/controller/"
   private val http = Http()
 
   def getRequest(path: String): Future[HttpResponse] = {
@@ -117,16 +117,10 @@ class TUIRest() extends Observer:
           return
         } else {
           if (input.startsWith("play")) {
-            if (!GameStateContext.getState().isInstanceOf[PlayerTurnState]) {
-              println("Start a game first.")
-            } else {
-               var x = input.replace("play ", "_")
-               x = x.replace(" ","_")
-              val result = getRequest("play?p1=" + x )
-              waitRefreshGame(result)
-            }
-          } else {
-            println("Unknown command.")
+            var x = input.replace("play ", "")
+            x = x.replace(" ", "")
+            val result = getRequest("play?p1=" + x)
+            waitRefreshGame(result)
           }
         }
     }

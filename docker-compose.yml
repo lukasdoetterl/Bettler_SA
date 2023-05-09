@@ -22,8 +22,6 @@ services:
 
   tui:
     image: bettler-view:0.1.0-SNAPSHOT
-    ports:
-      - "8080:8080"
     stdin_open: true
     tty: true
     container_name: theview
@@ -43,13 +41,3 @@ services:
       - core
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-    environment:
-      DISPLAY: $DISPLAY
-      UNO_SERVICE_HOST: bettler
-      UNO_SERVICE_PORT: 8080
-      PERSISTENCE_SERVICE_HOST: thepersistence
-      PERSISTENCE_SERVICE_PORT: 8081
-      PERSISTENCE_SERVE_PATH: /persistence/
-      CORE_SERVICE_HOST: thecore
-      CORE_SERVICE_PORT: 8080
-      CORE_SERVICE_PATH: /controller/
