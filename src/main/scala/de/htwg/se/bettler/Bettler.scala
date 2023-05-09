@@ -19,6 +19,7 @@ import de.htwg.se.bettler.controller._
   val fileIOService = RestAPIPersistence()
   val controllerService = ControllerRestAPI(controller)
   fileIOService.start()
+  //test
   controllerService.start()
   tui.run
 
