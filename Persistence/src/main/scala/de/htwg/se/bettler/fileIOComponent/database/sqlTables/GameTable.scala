@@ -5,7 +5,7 @@ package sqlTables
 import spray.json._
 import slick.jdbc.MySQLProfile.api.*
 
-class GameTable(tag: Tag) extends Table[(Int, Int, Int, Int, String, Int, String, Int, String)](tag, "BOARD") :
+class GameTable(tag: Tag) extends Table[(Int, Int, Int, Int, String, Int, String, Int, String)](tag, "GAME") :
   def id = column[Int]("ID", O.PrimaryKey, O.AutoInc)
 
   def maxplayer = column[Int]("MAX_PLAYER")

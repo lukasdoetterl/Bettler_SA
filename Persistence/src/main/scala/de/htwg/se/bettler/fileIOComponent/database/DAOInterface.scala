@@ -12,7 +12,7 @@ trait DAOInterface {
   
   def save(game: Game): Unit
 
-  def load(id: Option[Int]): Try[Game]
+  def load(id: Option[Int]): Game
   
   def storeGame(
                           maxPlayer: Int,

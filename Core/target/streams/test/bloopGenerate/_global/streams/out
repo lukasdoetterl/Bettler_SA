@@ -1,0 +1,4 @@
+[debug] [bettler-Core-test] Classpath dependencies List(bettler-Tools, bettler-Persistence)
+[debug] [bettler-Core-test] Dependencies from configurations List(bettler-Core)
+[debug] Bloop wrote the configuration of project 'bettler-Core-test' to 'C:\Users\lukas\IdeaProjects\Bettler_SA_newest\.bloop\bettler-Core-test.json'
+[success] Generated .bloop\bettler-Core-test.json

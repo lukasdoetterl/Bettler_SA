@@ -30,6 +30,9 @@ import scala.swing.{Publisher, Reactor}
 import scala.swing.event.Event
 import scala.sys.process.*
 
+import fileIOComponent.database._
+import scala.util.Try
+
 
 
 case class Controller(var game : Option[Game]) extends ControllerInterface:
@@ -37,6 +40,7 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
 
     val undomanager = util.UndoManager()
     val fileIO = new FileIO
+    val dao = new SlickDAO
     implicit val system: ActorSystem = ActorSystem()
     implicit val mat: Materializer = SystemMaterializer(system).materializer
 
@@ -154,12 +158,9 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
 
     def save : Unit =
         game match
-            case Some(g) =>
-                val result = getRequest("save")
-            case _=> return
+            case Some(g) => dao.save(g)
+            case None => return
     def load : Unit =
-        val result = getRequest("skip")
-        waitRefreshGame(result)
-        game = Some(fileIO.load)
+        game = Some(dao.load())
         notifyObservers
         publish(new GameChanged())

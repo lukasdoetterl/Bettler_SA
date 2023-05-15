@@ -34,9 +34,9 @@ val WAIT_DB = 5000
 
 class SlickDAO extends DAOInterface {
 
-  val databaseDB: String =  "bettler"
-  val databaseUser: String =  "nue"
-  val databasePassword: String =  "root"
+  val databaseDB: String =  "bettler_DB"
+  val databaseUser: String =  "root"
+  val databasePassword: String =  "admin"
   val databasePort: String =  "3306"
   val databaseHost: String =  "localhost"
   val databaseUrl = s"jdbc:mysql://$databaseHost:$databasePort/$databaseDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true"
@@ -98,8 +98,8 @@ class SlickDAO extends DAOInterface {
       println(s"Game saved in MySQL with ID $gameId")
     }
 
-  override def load(id: Option[Int] = None): Try[Game] =
-    Try {
+  override def load(id: Option[Int] = None): Game =
+    
       val query = id.map(id => gameTable.filter(_.id === id))
         .getOrElse(gameTable.filter(_.id === gameTable.map(_.id).max))
 
@@ -120,26 +120,29 @@ class SlickDAO extends DAOInterface {
       var p2cards: CardsInterface = Cards(Set.empty[CardInterface])
       var bCards: CardsInterface = Cards(Set.empty[CardInterface])
 
-      val player1Cards = player1CardsString.split(",").toList
-
-      player1Cards
-      .map(i =>
-            Card((i).toString) match
-              case Success(c) => p1cards = p1cards.add(c)
-              case Failure(e) => e.printStackTrace)
+      val player1Cards = player1CardsString.split(",").toList    
       val player2Cards = player2CardsString.split(",").toList
-      player2Cards
-      .map(i =>
-            Card((i).toString) match
-              case Success(c) => p2cards = p2cards.add(c)
-              case Failure(e) => e.printStackTrace)
       val boardCards = boardCardsString.split(",").toList
-      boardCards
-      .map(i =>
-            Card((i).toString) match
-              case Success(c) => bCards = bCards.add(c)
-              case Failure(e) => e.printStackTrace)
-        
+
+      if player1CardCount != 0 then      
+        player1Cards
+        .map(i =>
+              Card((i).toString) match
+                case Success(c) => p1cards = p1cards.add(c)
+                case Failure(e) => e.printStackTrace)
+      if player2CardCount != 0 then  
+        player2Cards
+        .map(i =>
+              Card((i).toString) match
+                case Success(c) => p2cards = p2cards.add(c)
+                case Failure(e) => e.printStackTrace)
+      if boardCardCount != 0 then  
+        boardCards
+        .map(i =>
+              Card((i).toString) match
+                case Success(c) => bCards = bCards.add(c)
+                case Failure(e) => e.printStackTrace)
+          
   //
 
       //make a for loop and as max use player1CardCount
@@ -147,7 +150,7 @@ class SlickDAO extends DAOInterface {
       GameStateContext.setState(PlayerTurnState(turn, maxPlayer))
       PvPGame(Vector(p1cards,p2cards), bCards, "loaded sucessfully")
 
-    }
+    
 
   
   override def storeGame(

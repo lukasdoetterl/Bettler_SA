@@ -1,0 +1,4 @@
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 13 products, 7 sources, 12 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/RestAPIPersistence.scala, ${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/FileIOInterface.scala, ${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/database/DAOInterface.scala, ${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/persistenceMain.scala, ${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/fileIOJson/FileIO.scala, ${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/database/sqlTables/GameTable.scala, ${BASE}/Persistence/src/main/scala/de/htwg/se/bettler/fileIOComponent/database/SlickDAO.scala)[0m
