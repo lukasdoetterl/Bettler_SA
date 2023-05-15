@@ -18,7 +18,9 @@ lazy val akkaDependencies = Seq(
   googleinject,
   codingwel,
   scalaxml,
-  playjson
+  playjson,
+  slick,
+  mysql
 )
 
 
@@ -66,6 +68,7 @@ lazy val persistence: Project = Project(id = "bettler-Persistence", base = file(
       version := "0.1.0-SNAPSHOT",
 
       scalaVersion := scala3Version,
+    libraryDependencies ++= akkaDependencies,
   ).enablePlugins(JavaAppPackaging, DockerPlugin)
   .enablePlugins(JacocoCoverallsPlugin)
 

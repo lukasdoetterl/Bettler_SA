@@ -26,5 +26,10 @@ object dependencies {
 
   val playjson= ("com.typesafe.play" %% "play-json" % "2.10.0-RC5")
 
+  val slick = ("com.typesafe.slick" %% "slick" % "3.5.0-M3").cross(CrossVersion.for3Use2_13)
+
+  val mysql = "mysql" % "mysql-connector-java" % "8.0.32"
+
+
 
 }

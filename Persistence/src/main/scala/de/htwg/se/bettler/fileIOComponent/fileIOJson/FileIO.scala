@@ -41,7 +41,7 @@ class FileIO extends FileIOInterface:
         val board = (json \ "board")
         val msg = (json \ "message").as[String]
         (0 to (player1 \ "anzahl").as[Int] - 1)
-          .map(i =>
+          .foreach(i =>
               val value = (player1.get \\ "value") (i).as[String]
               val symbol = (player1.get \\ "symbol") (i).as[String]
                 Card (symbol + value) match
