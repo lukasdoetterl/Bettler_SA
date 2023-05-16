@@ -124,7 +124,8 @@ class SlickDAO extends DAOInterface {
       val player2Cards = player2CardsString.split(",").toList
       val boardCards = boardCardsString.split(",").toList
 
-      if player1CardCount != 0 then      
+      //if statements are for checking if the cards are empty
+      if player1CardCount != 0 then
         player1Cards
         .map(i =>
               Card((i).toString) match
