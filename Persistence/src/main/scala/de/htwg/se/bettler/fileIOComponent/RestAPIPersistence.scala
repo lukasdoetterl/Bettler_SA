@@ -18,6 +18,7 @@ import akka.stream.ActorMaterializer
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.util.{Failure, Success}
 import akka.protobufv3.internal.compiler.PluginProtos.CodeGeneratorResponse.File
+import de.htwg.se.bettler.fileIOComponent.database.SlickDAO
 import model.gameComponent.Game
 import model.gameComponent.pvpGameImpl.PvPGame
 import play.api.libs.json.*
@@ -29,6 +30,7 @@ class RestAPIPersistence():
   implicit val executionContext: ExecutionContextExecutor = system.executionContext
 
   val fileIO = new FileIO
+  val dao = new SlickDAO
   val RestUIPort = 8081
   val routes: String =
     """
@@ -46,6 +48,12 @@ class RestAPIPersistence():
         }
       },
       get {
+        path("persistence" / "loadfromDB") {
+          //complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.gametoJson(fileIO.load).toString()))
+          complete(fileIO.gametoJson(dao.load()).toString())
+        }
+      },
+      get {
         path("persistence" / "test") {
           complete("test")
         }
@@ -55,6 +63,16 @@ class RestAPIPersistence():
           entity(as[String]) { data =>
             complete {
               fileIO.save(fileIO.jsontoGame(data))
+              Future.successful(HttpEntity(ContentTypes.`text/html(UTF-8)`, "game successfully saved"))
+            }
+          }
+        }
+      } ,
+      put {
+        path("persistence" / "saveDB") {
+          entity(as[String]) { data =>
+            complete {
+              dao.save(fileIO.jsontoGame(data))
               Future.successful(HttpEntity(ContentTypes.`text/html(UTF-8)`, "game successfully saved"))
             }
           }
