@@ -20,7 +20,8 @@ lazy val akkaDependencies = Seq(
   scalaxml,
   playjson,
   slick,
-  mysql
+  mysql,
+  mongodb
 )
 
 

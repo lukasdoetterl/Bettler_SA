@@ -41,6 +41,7 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
     val undomanager = util.UndoManager()
     val fileIO = new FileIO
     val dao = new SlickDAO
+    val mongo = new MongoDB
     implicit val system: ActorSystem = ActorSystem()
     implicit val mat: Materializer = SystemMaterializer(system).materializer
 
@@ -158,9 +159,11 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
 
     def save : Unit =
         game match
-            case Some(g) => dao.save(g)
+            //case Some(g) => dao.save(g)
+            case Some(g) => mongo.save(g)
             case None => return
     def load : Unit =
-        game = Some(dao.load())
+        //game = Some(dao.load())
+        game = Some(mongo.load())
         notifyObservers
         publish(new GameChanged())
