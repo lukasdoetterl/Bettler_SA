@@ -2,27 +2,23 @@ package de.htwg.se.bettler
 package fileIOComponent
 package database
 
+import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.{Card, Cards}
 import de.htwg.se.bettler.model.cardComponent.{CardInterface, CardsInterface}
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
 import de.htwg.se.bettler.model.gameComponent.Game
 import de.htwg.se.bettler.model.gameComponent.pvpGameImpl.PvPGame
 import de.htwg.se.bettler.model.stateComponent.GameStateContext
 import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
-//import org.mongodb.scala.bson.BsonDocument
+import com.mongodb.ConnectionString
 import org.mongodb.scala.model.*
 import org.mongodb.scala.model.Aggregates.*
 import org.mongodb.scala.model.Filters.*
 import org.mongodb.scala.model.Sorts.*
 import org.mongodb.scala.result.{DeleteResult, InsertOneResult, UpdateResult}
-import org.mongodb.scala.{Document, MongoClient, MongoCollection, MongoDatabase, Observable, Observer, SingleObservable, result}
-import org.mongodb.scala.documentToUntypedDocument
+import org.mongodb.scala.{Document, MongoClient, MongoCollection, MongoDatabase, Observable, Observer, SingleObservable, SingleObservableFuture, documentToUntypedDocument, result}
+
 import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
 import scala.util.{Failure, Success, Try}
-import com.mongodb.ConnectionString
-
-import org.mongodb.scala.SingleObservableFuture
 
 
 class MongoDB extends DAOInterface {
@@ -35,7 +31,7 @@ class MongoDB extends DAOInterface {
   private val host = "localhost"
   private val port = "27017"
 
-  val uri: String = s"mongodb://$database_username:$database_pw@$host:$port/?authSource=admin"
+  val uri: String = s"mongodb://$database_username:$database_pw@$host:$port/?authSource=bettler"
   private val mongoClient: MongoClient = MongoClient(uri)
   println(uri)
   val database: MongoDatabase = mongoClient.getDatabase("bettler")

@@ -30,7 +30,7 @@ object dependencies {
 
   val mysql = "mysql" % "mysql-connector-java" % "8.0.32"
 
-  val mongodb = ("org.mongodb.scala" %% "mongo-scala-driver" % "4.0.0").cross(CrossVersion.for3Use2_13)
+  val mongodb = ("org.mongodb.scala" %% "mongo-scala-driver" % "4.6.0").cross(CrossVersion.for3Use2_13)
 
 
 
