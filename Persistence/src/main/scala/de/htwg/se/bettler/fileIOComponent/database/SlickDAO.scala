@@ -155,14 +155,15 @@ class SlickDAO extends DAOInterface {
 
   
   override def storeGame(
-                          maxPlayer: Int,
-                          Turn: Int,
-                          player1CardCount: Int,
-                          player1Cards: String,
-                          player2CardCount: Int,
-                          player2CardsString: String,
-                          BoardCardCount: Int,
-                          BoardCards: String
+                    maxPlayer: Int,
+                    Turn: Int,
+                    player1CardCount: Int,
+                    player1Cards: String,
+                    player2CardCount: Int,
+                    player2CardsString: String,
+                    BoardCardCount: Int,
+                    BoardCards: String,
+                    id: Option[Int] = None
                         ): Int = {
     val game = (
       0,
@@ -175,6 +176,7 @@ class SlickDAO extends DAOInterface {
       BoardCardCount,
       BoardCards
     )
+    deleteGame(id.getOrElse(0))
     val query = gameTable returning gameTable.map(_.id)
     val action = query += game
     val result = database.run(action)
@@ -182,22 +184,16 @@ class SlickDAO extends DAOInterface {
   }
 
 
-  override def deleteGame(id: Int): Try[Boolean] =
-    Try{
-      Await.result(database.run(gameTable.filter(_.id === id).delete), WAIT_TIME)
+  override def deleteGame(id: Int): Try[Boolean] = {
+    val query = gameTable.filter(_.id === id).delete
+    val result = database.run(query)
+    Try {
+      Await.result(result, WAIT_TIME)
       true
+    }.recover {
+      case e: Exception =>
+        println(s"Failed to delete game with ID $id: ${e.getMessage}")
+        false
     }
-
-
-
-  def sanitize(str: String): String =
-    str.replace("\\n", "\n")
-      .replace("\\r", "\r")
-      .replace("\\t", "\t")
-      .replace("\\b", "\b")
-      .replace("\\f", "\f")
-      .replace("\\\\", "\\")
-      .replace("\\\"", "\"")
-      .replace("\\'", "'")
-      .replace("\"\"", "\"")
+  }
 }
