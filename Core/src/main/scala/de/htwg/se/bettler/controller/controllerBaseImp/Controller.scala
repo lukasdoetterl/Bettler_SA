@@ -164,6 +164,6 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
             case None => return
     def load : Unit =
         //game = Some(dao.load())
-        game = Some(mongo.load(Some(3)))
+        game = Some(mongo.load())
         notifyObservers
         publish(new GameChanged())

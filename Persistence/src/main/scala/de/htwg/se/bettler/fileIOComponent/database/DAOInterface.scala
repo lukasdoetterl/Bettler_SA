@@ -22,7 +22,8 @@ trait DAOInterface {
                           player2CardCount: Int,
                           player2CardsString: String,
                           BoardCardCount: Int,
-                          BoardCards: String
+                          BoardCards: String,
+                          id: Option[Int]
                         ): Int
   
   def deleteGame(id: Int): Try[Boolean]

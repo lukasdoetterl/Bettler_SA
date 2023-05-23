@@ -31,12 +31,20 @@ class MongoDB extends DAOInterface {
   private val host = "localhost"
   private val port = "27017"
 
-  val uri: String = s"mongodb://$database_username:$database_pw@$host:$port/?authSource=bettler"
+  val uri: String = s"mongodb://$database_username:$database_pw@$host:$port/?authSource=admin"
   private val mongoClient: MongoClient = MongoClient(uri)
   println(uri)
-  val database: MongoDatabase = mongoClient.getDatabase("bettler")
+  val database: MongoDatabase = mongoClient.getDatabase("admin")
   println("Connected to MongoDB")
   val gameCollection: MongoCollection[Document] = database.getCollection("games")
+
+  val gameCounterCollection: MongoCollection[Document] = database.getCollection("gameCounter")
+
+/* Initialize game counter */
+  val gameCounterDoc: Option[Document] = Await.result(gameCounterCollection.find(equal("name", "gameCounter")).headOption(), 5.seconds)
+  if (gameCounterDoc.isEmpty) {
+    gameCounterCollection.insertOne(Document("name" -> "gameCounter", "value" -> 0)).toFuture()
+  }
 
 
   override def save(game: Game): Unit = {
@@ -68,10 +76,7 @@ class MongoDB extends DAOInterface {
   }
 
   override def load(id: Option[Int] = None): Game = {
-    val query = id match {
-      case Some(gameId) => gameCollection.find(equal("id", gameId))
-      case None => gameCollection.find().sort(Document("id" -> -1)).limit(1)
-    }
+    val query = gameCollection.find(equal("id", 1))
     val gameDoc = Await.result(query.headOption(), 5.seconds)
     if (gameDoc.isDefined) {
       val maxPlayer = gameDoc.get.getInteger("maxPlayer")
@@ -115,18 +120,24 @@ class MongoDB extends DAOInterface {
       throw new NoSuchElementException("No game found with the given ID")
     }
   }
-
   override def storeGame(
-                          maxPlayer: Int,
-                          Turn: Int,
-                          player1CardCount: Int,
-                          player1Cards: String,
-                          player2CardCount: Int,
-                          player2CardsString: String,
-                          BoardCardCount: Int,
-                          BoardCards: String
-                        ): Int = {
+    maxPlayer: Int,
+    Turn: Int,
+    player1CardCount: Int,
+    player1Cards: String,
+    player2CardCount: Int,
+    player2CardsString: String,
+    BoardCardCount: Int,
+    BoardCards: String,
+    id: Option[Int] = None
+  ): Int = {
+
+    val gameCounterDoc: Option[Document] = Await.result(this.gameCounterCollection.find(equal("name", "gameCounter")).headOption(), 5.seconds)
+    val gameCounter: Int = gameCounterDoc.map(_.getInteger("value").toInt).getOrElse(0)
+    val gameId = id.getOrElse(gameCounter + 1)
+    deleteGame(gameId)
     val gameDoc = Document(
+      "id" -> gameId,
       "maxPlayer" -> maxPlayer,
       "turn" -> Turn,
       "player1CardCount" -> player1CardCount,
@@ -136,9 +147,9 @@ class MongoDB extends DAOInterface {
       "boardCardCount" -> BoardCardCount,
       "boardCards" -> BoardCards
     )
-    val insertObservable = gameCollection.insertOne(gameDoc)
+    val insertObservable = this.gameCollection.insertOne(gameDoc)
     Await.result(insertObservable.toFuture(), 5.seconds)
-    gameDoc.getInteger("_id")
+    gameDoc.getInteger("id")
   }
 
   override def deleteGame(id: Int): Try[Boolean] = {
