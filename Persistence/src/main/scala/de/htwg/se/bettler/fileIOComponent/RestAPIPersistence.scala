@@ -19,6 +19,7 @@ import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.util.{Failure, Success}
 import akka.protobufv3.internal.compiler.PluginProtos.CodeGeneratorResponse.File
 import de.htwg.se.bettler.fileIOComponent.database.SlickDAO
+import de.htwg.se.bettler.fileIOComponent.database.MongoDB
 import model.gameComponent.Game
 import model.gameComponent.pvpGameImpl.PvPGame
 import play.api.libs.json.*
@@ -31,7 +32,8 @@ class RestAPIPersistence():
 
   val fileIO = new FileIO
   val dao = new SlickDAO
-  val RestUIPort = 8081
+  val Mongo = new MongoDB
+  val RestUIPort = 8085
   val routes: String =
     """
          """.stripMargin
@@ -51,6 +53,12 @@ class RestAPIPersistence():
         path("persistence" / "loadfromDB") {
           //complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.gametoJson(fileIO.load).toString()))
           complete(fileIO.gametoJson(dao.load()).toString())
+        }
+      },
+      get {
+        path("persistence" / "loadfromMongoDB") {
+          //complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.gametoJson(fileIO.load).toString()))
+          complete(fileIO.gametoJson(Mongo.load()).toString())
         }
       },
       get {
@@ -77,7 +85,18 @@ class RestAPIPersistence():
             }
           }
         }
+      },
+      put {
+        path("persistence" / "saveMongoDB") {
+          entity(as[String]) { data =>
+            complete {
+              Mongo.save(fileIO.jsontoGame(data))
+              Future.successful(HttpEntity(ContentTypes.`text/html(UTF-8)`, "game successfully saved"))
+            }
+          }
+        }
       }
+      
     )
 
   def start(): Unit = {

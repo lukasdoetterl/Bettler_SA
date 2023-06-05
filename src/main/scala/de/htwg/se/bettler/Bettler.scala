@@ -11,7 +11,7 @@ import de.htwg.se.bettler.controller._
 
 @main def Main: Unit =
 //For docker
-/*
+
   val injector = Guice.createInjector(new BettlerModule)
   val controller = injector.getInstance(classOf[ControllerInterface])
   val tui = TUIRest()
@@ -24,15 +24,16 @@ import de.htwg.se.bettler.controller._
   //test
   controllerService.start()
   tui.run
-  */
+
 
 //For TEsting :
+/*
   val injector = Guice.createInjector(new BettlerModule)
   val controller = injector.getInstance(classOf[ControllerInterface])
   val tui = TUI(controller)
   val gui = SwingGui(controller)
   tui.run
 
-
+*/
 
 

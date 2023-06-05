@@ -53,7 +53,8 @@ class TUIRest() extends Observer:
   implicit val system: ActorSystem = ActorSystem()
   implicit val mat: Materializer = SystemMaterializer(system).materializer
 
-  val serverUri = s"http://thecore:8080/controller/"
+  //val serverUri = s"http://thecore:8080/controller/"
+  val serverUri = s"http://localhost:8080/controller/"
   private val http = Http()
 
   def getRequest(path: String): Future[HttpResponse] = {
@@ -110,8 +111,12 @@ class TUIRest() extends Observer:
         val result = getRequest("redo")
         waitRefreshGame(result)
       case "next" => println("test")
-      case "save" => println("test")
-      case "load" => println("test")
+      case "save" =>
+        val result = getRequest("save")
+        waitRefreshGame(result)
+      case "load" =>
+        val result = getRequest("load")
+        waitRefreshGame(result)
       case _ =>
         if (!input.isInstanceOf[String]) {
           return

@@ -39,13 +39,11 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
 
 
     val undomanager = util.UndoManager()
-    val fileIO = new FileIO
-    val dao = new SlickDAO
     val mongo = new MongoDB
     implicit val system: ActorSystem = ActorSystem()
     implicit val mat: Materializer = SystemMaterializer(system).materializer
 
-    val serverUri = s"http://localhost:8089/persistence/"
+    val serverUri = s"http://localhost:8085/persistence/"
     private val http = Http()
 
     def getRequest(path: String): Future[HttpResponse] = {

@@ -5,23 +5,31 @@ package controllerBaseImp
 import model.stateComponent.GameStateContext
 import model.cardComponent.cardBaseImpl.Card
 import model.cardComponent.cardBaseImpl.Cards
-import model.cardComponent._
-
+import model.cardComponent.*
 import akka.actor.typed.ActorSystem
 import akka.actor.typed.scaladsl.Behaviors
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpResponse, StatusCodes}
+
+import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpMethods, HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives.*
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.directives.MethodDirectives.get
 import akka.protobufv3.internal.compiler.PluginProtos.CodeGeneratorResponse.File
 import akka.stream.ActorMaterializer
 import play.api.libs.json.*
+import akka.http.scaladsl.server.{ExceptionHandler, Route}
+import akka.http.scaladsl.unmarshalling.Unmarshal
+import scala.concurrent.{Await, ExecutionContextExecutor, Future}
+import akka.http.scaladsl.model.HttpRequest
 
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.util.{Failure, Success}
-import de.htwg.se.bettler.controller._
+import de.htwg.se.bettler.controller.*
 import de.htwg.se.bettler.model.gameComponent.Game
+
+import concurrent.duration.DurationInt
+
+
 
 //****************************************************************************** CLASS DEFINITION
 class ControllerRestAPI(controller:ControllerInterface):
@@ -33,6 +41,35 @@ class ControllerRestAPI(controller:ControllerInterface):
   val routes: String =
     """
          """.stripMargin
+  var exit = false
+
+  //val serverUri = s"http://thecore:8080/controller/"
+  
+  val serverUriPersistence = s"http://localhost:8085/persistence/"
+  private val http = Http()
+
+  def getRequest(path: String): Future[HttpResponse] = {
+    val request = HttpRequest(
+      method = HttpMethods.GET,
+      uri = serverUriPersistence + path
+    )
+    http.singleRequest(request)
+  }
+
+  def waitRefreshGame(resulti: Future[HttpResponse]): Unit = {
+    val res = resulti.flatMap { response =>
+      response.status match {
+        case StatusCodes.OK =>
+          Unmarshal(response.entity).to[String].map { string =>
+            println(string.toString)
+          }
+        case _ =>
+          Future.failed(new RuntimeException(s"HTTP request failed with status ${response.status} and entity ${response.entity}"))
+      }
+    }
+    Await.result(res, 10.seconds)
+
+  }
 
   val route: Route =
     concat(
@@ -92,8 +129,14 @@ class ControllerRestAPI(controller:ControllerInterface):
         }
       },
       get {
-        path("controller" / "redo") {
-          controller.redo
+        path("controller" / "save") {
+          controller.save
+          complete(HttpEntity(controller.toString))
+        }
+      },
+      get {
+        path("controller" / "load") {
+          controller.load
           complete(HttpEntity(controller.toString))
         }
       },
@@ -101,7 +144,7 @@ class ControllerRestAPI(controller:ControllerInterface):
 
 
   def start(): Unit = {
-    val binding = Http().newServerAt("thecore", RestUIPort).bind(route)
+    val binding = Http().newServerAt("localhost", RestUIPort).bind(route)
 
     binding.onComplete {
       case Success(binding) => {
