@@ -54,7 +54,7 @@ class TUIRest() extends Observer:
   implicit val mat: Materializer = SystemMaterializer(system).materializer
 
   //val serverUri = s"http://thecore:8080/controller/"
-  val serverUri = s"http://localhost:8080/controller/"
+  val serverUri = s"http://localhost:8085/controller/"
   private val http = Http()
 
   def getRequest(path: String): Future[HttpResponse] = {

@@ -33,7 +33,7 @@ class RestAPIPersistence():
   val fileIO = new FileIO
   val dao = new SlickDAO
   val Mongo = new MongoDB
-  val RestUIPort = 8085
+  val RestUIPort = 8087
   val routes: String =
     """
          """.stripMargin

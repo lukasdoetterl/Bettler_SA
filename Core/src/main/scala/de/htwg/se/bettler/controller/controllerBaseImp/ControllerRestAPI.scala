@@ -37,14 +37,14 @@ class ControllerRestAPI(controller:ControllerInterface):
   implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "my-system")
   implicit val executionContext: ExecutionContextExecutor = system.executionContext
 
-  val RestUIPort = 8080
+  val RestUIPort = 8085
   val routes: String =
     """
          """.stripMargin
   var exit = false
 
   //val serverUri = s"http://thecore:8080/controller/"
-  
+
   val serverUriPersistence = s"http://localhost:8085/persistence/"
   private val http = Http()
 
@@ -125,6 +125,12 @@ class ControllerRestAPI(controller:ControllerInterface):
       get {
         path("controller" / "undo") {
           controller.undo
+          complete(HttpEntity(controller.toString))
+        }
+      },
+      get {
+        path("controller" / "redo") {
+          controller.redo
           complete(HttpEntity(controller.toString))
         }
       },
