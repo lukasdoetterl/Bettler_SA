@@ -31,7 +31,7 @@ class RestAPIPersistence():
   implicit val executionContext: ExecutionContextExecutor = system.executionContext
 
   val fileIO = new FileIO
-  val dao = new SlickDAO
+  //val dao = new SlickDAO
   val Mongo = new MongoDB
   val RestUIPort = 8087
   val routes: String =
@@ -51,8 +51,9 @@ class RestAPIPersistence():
       },
       get {
         path("persistence" / "loadfromDB") {
+          complete("no")
           //complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.gametoJson(fileIO.load).toString()))
-          complete(fileIO.gametoJson(dao.load()).toString())
+          //complete(fileIO.gametoJson(dao.load()).toString())
         }
       },
       get {
@@ -80,7 +81,7 @@ class RestAPIPersistence():
         path("persistence" / "saveDB") {
           entity(as[String]) { data =>
             complete {
-              dao.save(fileIO.jsontoGame(data))
+              //dao.save(fileIO.jsontoGame(data))
               Future.successful(HttpEntity(ContentTypes.`text/html(UTF-8)`, "game successfully saved"))
             }
           }
