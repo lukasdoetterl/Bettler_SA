@@ -58,7 +58,7 @@ class SlickDAO extends DAOInterface {
     Await.result(database.run(setup), WAIT_TIME)
   } catch  {
     case e: SQLNonTransientException =>
-      println("Waiting for DB connection")
+      println("Waiting for MYSQLDB connection")
       Thread.sleep(WAIT_DB)
       Await.result(database.run(setup), WAIT_TIME)
   }
