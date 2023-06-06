@@ -20,6 +20,12 @@ import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
 import scala.util.{Failure, Success, Try}
 
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.async.Async.{async, await}
+
+
+
 
 class MongoDB extends DAOInterface {
 
@@ -30,6 +36,7 @@ class MongoDB extends DAOInterface {
   private val database_username = "root"
   private val host = "localhost"
   private val port = "27017"
+  
 
   val uri: String = s"mongodb://$database_username:$database_pw@$host:$port/?authSource=admin"
   private val mongoClient: MongoClient = MongoClient(uri)
@@ -72,7 +79,10 @@ class MongoDB extends DAOInterface {
       boardCardCount,
       boardCardsString
     )
-    println(s"Game saved in MongoDB with ID $gameId")
+    val future: Future[Unit] = Future {
+      val gameid = gameId
+      println(s"Game saved in MongoDB with ID $gameId")
+    }
   }
 
   override def load(id: Option[Int] = None): Game = {
@@ -121,16 +131,16 @@ class MongoDB extends DAOInterface {
     }
   }
   override def storeGame(
-    maxPlayer: Int,
-    Turn: Int,
-    player1CardCount: Int,
-    player1Cards: String,
-    player2CardCount: Int,
-    player2CardsString: String,
-    BoardCardCount: Int,
-    BoardCards: String,
-    id: Option[Int] = None
-  ): Int = {
+                          maxPlayer: Int,
+                          Turn: Int,
+                          player1CardCount: Int,
+                          player1Cards: String,
+                          player2CardCount: Int,
+                          player2CardsString: String,
+                          BoardCardCount: Int,
+                          BoardCards: String,
+                          id: Option[Int] = None
+                        ): Int = {
 
     val gameCounterDoc: Option[Document] = Await.result(this.gameCounterCollection.find(equal("name", "gameCounter")).headOption(), 5.seconds)
     val gameCounter: Int = gameCounterDoc.map(_.getInteger("value").toInt).getOrElse(0)
@@ -151,7 +161,6 @@ class MongoDB extends DAOInterface {
     Await.result(insertObservable.toFuture(), 5.seconds)
     gameDoc.getInteger("id")
   }
-
   override def deleteGame(id: Int): Try[Boolean] = {
     val deleteObservable = gameCollection.deleteOne(equal("id", id))
     val result = Await.result(deleteObservable.toFuture(), 5.seconds)

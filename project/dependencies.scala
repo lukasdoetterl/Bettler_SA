@@ -32,6 +32,11 @@ object dependencies {
 
   val mongodb = ("org.mongodb.scala" %% "mongo-scala-driver" % "4.6.0").cross(CrossVersion.for3Use2_13)
 
+  val async = ("org.scala-lang.modules" %% "scala-async" % "1.0.0-M1").cross(CrossVersion.for3Use2_13)
+
+  val reflect = ("org.scala-lang" % "scala-reflect" % "2.13.6")
+
+
 
 
 
