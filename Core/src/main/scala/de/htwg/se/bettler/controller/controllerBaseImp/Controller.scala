@@ -127,6 +127,7 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
         kind match
             case "pve" => Some(Game(kind))
             case "pvp" => Some(Game(kind))
+            case "test" => Some(Game(kind))
             case _ => None
 
     def nextRound() : Option[Game] =

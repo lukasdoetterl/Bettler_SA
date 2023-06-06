@@ -88,6 +88,10 @@ class ControllerRestAPI(controller:ControllerInterface):
             then
               controller.doAndNotify(controller.newGame, "pve")
               complete(HttpEntity(controller.toString))
+            else if p1.equals("test")
+            then
+              controller.doAndNotify(controller.newGame, "test")
+              complete(HttpEntity(controller.toString))
             else
               complete(HttpEntity("wrong parameter"))
           }
