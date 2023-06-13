@@ -20,6 +20,8 @@ import de.htwg.se.bettler.model.cardComponent.*
 import de.htwg.se.bettler.model.gameComponent.Game
 import de.htwg.se.bettler.util.*
 import net.codingwell.scalaguice.InjectorExtensions.*
+import scala.concurrent.ExecutionContext.Implicits.global
+
 
 
 import java.nio.charset.StandardCharsets
@@ -32,6 +34,7 @@ import scala.sys.process.*
 
 import fileIOComponent.database._
 import scala.util.Try
+import scala.util.{Failure, Success, Try}
 
 
 
@@ -161,8 +164,14 @@ case class Controller(var game : Option[Game]) extends ControllerInterface:
             //case Some(g) => dao.save(g)
             case Some(g) => mongo.save(g)
             case None => return
-    def load : Unit =
-        //game = Some(dao.load())
-        game = Some(mongo.load())
-        notifyObservers
-        publish(new GameChanged())
+
+    def load: Unit = {
+        mongo.load().onComplete {
+            case Success(game) =>
+                this.game = Some(game)
+                notifyObservers
+                publish(new GameChanged())
+            case Failure(exception) =>
+                println(s"Failed to load game: ${exception.getMessage}")
+        }
+    }

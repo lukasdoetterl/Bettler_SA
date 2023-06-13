@@ -2,43 +2,31 @@ package de.htwg.se.bettler
 package fileIOComponent
 package database
 
-//project imports
 
-//libaries
-
+import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.{Card, Cards}
 import de.htwg.se.bettler.model.cardComponent.{CardInterface, CardsInterface}
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Cards
-
-import java.sql.SQLNonTransientException
-import slick.lifted.TableQuery
-import slick.jdbc.JdbcBackend.Database
-import slick.jdbc.MySQLProfile.api.*
-
-import scala.util.{Failure, Success, Try}
-import concurrent.duration.DurationInt
-import scala.concurrent.{Await, Future}
 import de.htwg.se.bettler.model.gameComponent.Game
 import de.htwg.se.bettler.model.gameComponent.pvpGameImpl.PvPGame
 import de.htwg.se.bettler.model.stateComponent.GameStateContext
 import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
-import play.api.libs.json.{JsObject, Json}
 import fileIOComponent.database.DAOInterface
 import fileIOComponent.database.sqlTables.GameTable
+import slick.jdbc.JdbcBackend.Database
+import slick.jdbc.MySQLProfile.api._
+import slick.lifted.TableQuery
 
-import de.htwg.se.bettler.model.cardComponent.cardBaseImpl.Card
+import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.duration.DurationInt
+import scala.util.{Failure, Success, Try}
+import scala.async.Async.{async, await}
 
+class SlickDAO(implicit ec: ExecutionContext) extends DAOInterface {
 
-
-val WAIT_TIME = 5.seconds
-val WAIT_DB = 5000
-
-class SlickDAO extends DAOInterface {
-
-  val databaseDB: String =  "bettler_DB"
-  val databaseUser: String =  "root"
-  val databasePassword: String =  "admin"
-  val databasePort: String =  "3306"
-  val databaseHost: String =  "localhost"
+  val databaseDB: String = "bettler_DB"
+  val databaseUser: String = "root"
+  val databasePassword: String = "admin"
+  val databasePort: String = "3306"
+  val databaseHost: String = "localhost"
   val databaseUrl = s"jdbc:mysql://$databaseHost:$databasePort/$databaseDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&autoReconnect=true"
   println(databaseUrl)
   val database = Database.forURL(
@@ -48,63 +36,53 @@ class SlickDAO extends DAOInterface {
     password = databasePassword
   )
 
-
   val gameTable = new TableQuery(new GameTable(_))
 
-
-  val setup: DBIOAction[Unit, NoStream, Effect.Schema] = DBIO.seq(gameTable.schema.createIfNotExists)
+  val setup: DBIOAction[Unit, NoStream, Effect.Schema] = gameTable.schema.createIfNotExists
   println("create tables")
-  try {
-    Await.result(database.run(setup), WAIT_TIME)
-  } catch  {
-    case e: SQLNonTransientException =>
-      println("Waiting for MYSQLDB connection")
-      Thread.sleep(WAIT_DB)
-      Await.result(database.run(setup), WAIT_TIME)
+  database.run(setup).recover {
+    case e: Throwable =>
+      println(s"Failed to create tables: ${e.getMessage}")
   }
   println("tables created")
 
-  override def save(game: Game): Unit =
-    Try {
-      println("saving game in MySQL")
-      val turn = GameStateContext.getState().asInstanceOf[PlayerTurnState].currentPlayer
-      val maxplayer = GameStateContext.getState().asInstanceOf[PlayerTurnState].maxPlayers
-      val player1CardCount = game.getPlayers()(0).size
-      val player2CardCount = game.getPlayers()(1).size
-      val p1C = game.getPlayers()(0).returnSet
-      var player1CardsString = ""
-      p1C.foreach(player1CardsString += _.toString+",")
+  override def save(game: Game): Future[Unit] = Future {
+    println("saving game in MySQL")
+    val turn = GameStateContext.getState().asInstanceOf[PlayerTurnState].currentPlayer
+    val maxplayer = GameStateContext.getState().asInstanceOf[PlayerTurnState].maxPlayers
+    val player1CardCount = game.getPlayers()(0).size
+    val player2CardCount = game.getPlayers()(1).size
+    val p1C = game.getPlayers()(0).returnSet
+    var player1CardsString = ""
+    p1C.foreach(player1CardsString += _.toString + ",")
 
-      val p2C = game.getPlayers()(1).returnSet
-      var player2CardsString = ""
-      p2C.foreach(player2CardsString += _.toString+",")
+    val p2C = game.getPlayers()(1).returnSet
+    var player2CardsString = ""
+    p2C.foreach(player2CardsString += _.toString + ",")
 
-      val boardCardCount = game.getBoard().size
-      val bC = game.getBoard().returnSet
-      var boardCardsString = ""
-      bC.foreach(boardCardsString += _.toString+",")
+    val boardCardCount = game.getBoard().size
+    val bC = game.getBoard().returnSet
+    var boardCardsString = ""
+    bC.foreach(boardCardsString += _.toString + ",")
 
-      val gameId =
-        storeGame(
-          maxplayer,
-          turn,
-          player1CardCount,
-          player1CardsString,
-          player2CardCount,
-          player2CardsString,
-          boardCardCount,
-          boardCardsString
-        )
-      println(s"Game saved in MySQL with ID $gameId")
-    }
+    val gameId = storeGame(
+      maxplayer,
+      turn,
+      player1CardCount,
+      player1CardsString,
+      player2CardCount,
+      player2CardsString,
+      boardCardCount,
+      boardCardsString
+    )
+    println(s"Game saved in MySQL with ID $gameId")
+  }
 
-  override def load(id: Option[Int] = None): Game =
-    
-      val query = id.map(id => gameTable.filter(_.id === id))
-        .getOrElse(gameTable.filter(_.id === gameTable.map(_.id).max))
+  override def load(id: Option[Int]): Future[Game] = {
+    val query = id.map(id => gameTable.filter(_.id === id))
+      .getOrElse(gameTable.filter(_.id === gameTable.map(_.id).max))
 
-      val game = Await.result(database.run(query.result), WAIT_TIME)
-
+    database.run(query.result).map { game =>
       println("loading game from MySQL")
 
       val maxPlayer = game.head._2
@@ -120,51 +98,52 @@ class SlickDAO extends DAOInterface {
       var p2cards: CardsInterface = Cards(Set.empty[CardInterface])
       var bCards: CardsInterface = Cards(Set.empty[CardInterface])
 
-      val player1Cards = player1CardsString.split(",").toList    
+      val player1Cards = player1CardsString.split(",").toList
       val player2Cards = player2CardsString.split(",").toList
       val boardCards = boardCardsString.split(",").toList
 
       //if statements are for checking if the cards are empty
-      if player1CardCount != 0 then
+      if (player1CardCount != 0) {
         player1Cards
-        .map(i =>
-              Card((i).toString) match
-                case Success(c) => p1cards = p1cards.add(c)
-                case Failure(e) => e.printStackTrace)
-      if player2CardCount != 0 then  
+          .map(i =>
+            Card((i).toString) match {
+              case Success(c) => p1cards = p1cards.add(c)
+              case Failure(e) => e.printStackTrace
+            })
+      }
+      if (player2CardCount != 0) {
         player2Cards
-        .map(i =>
-              Card((i).toString) match
-                case Success(c) => p2cards = p2cards.add(c)
-                case Failure(e) => e.printStackTrace)
-      if boardCardCount != 0 then  
+          .map(i =>
+            Card((i).toString) match {
+              case Success(c) => p2cards = p2cards.add(c)
+              case Failure(e) => e.printStackTrace
+            })
+      }
+      if (boardCardCount != 0) {
         boardCards
-        .map(i =>
-              Card((i).toString) match
-                case Success(c) => bCards = bCards.add(c)
-                case Failure(e) => e.printStackTrace)
-          
-  //
+          .map(i =>
+            Card((i).toString) match {
+              case Success(c) => bCards = bCards.add(c)
+              case Failure(e) => e.printStackTrace
+            })
+      }
 
-      //make a for loop and as max use player1CardCount
-  
       GameStateContext.setState(PlayerTurnState(turn, maxPlayer))
-      PvPGame(Vector(p1cards,p2cards), bCards, "loaded sucessfully")
+      PvPGame(Vector(p1cards, p2cards), bCards, "loaded successfully")
+    }
+  }
 
-    
-
-  
   override def storeGame(
-                    maxPlayer: Int,
-                    Turn: Int,
-                    player1CardCount: Int,
-                    player1Cards: String,
-                    player2CardCount: Int,
-                    player2CardsString: String,
-                    BoardCardCount: Int,
-                    BoardCards: String,
-                    id: Option[Int] = None
-                        ): Int = {
+                           maxPlayer: Int,
+                           Turn: Int,
+                           player1CardCount: Int,
+                           player1Cards: String,
+                           player2CardCount: Int,
+                           player2CardsString: String,
+                           BoardCardCount: Int,
+                           BoardCards: String,
+                           id: Option[Int] = None
+                         ): Future[Int] = {
     val game = (
       0,
       maxPlayer,
@@ -176,24 +155,21 @@ class SlickDAO extends DAOInterface {
       BoardCardCount,
       BoardCards
     )
-    deleteGame(id.getOrElse(0))
-    val query = gameTable returning gameTable.map(_.id)
-    val action = query += game
-    val result = database.run(action)
-    Await.result(result, WAIT_TIME)
+    deleteGame(id.getOrElse(0)).flatMap { _ =>
+      val query = gameTable returning gameTable.map(_.id)
+      val action = query += game
+      database.run(action)
+    }
   }
 
-
-  override def deleteGame(id: Int): Try[Boolean] = {
+  override def deleteGame(id: Int): Future[Try[Unit]] = {
     val query = gameTable.filter(_.id === id).delete
     val result = database.run(query)
-    Try {
-      Await.result(result, WAIT_TIME)
-      true
-    }.recover {
-      case e: Exception =>
-        println(s"Failed to delete game with ID $id: ${e.getMessage}")
-        false
-    }
+    result.map(_ => Success(()))
+      .recover {
+        case e: Exception =>
+          println(s"Failed to delete game with ID $id: ${e.getMessage}")
+          Failure(e)
+      }
   }
 }

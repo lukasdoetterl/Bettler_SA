@@ -56,12 +56,14 @@ class RestAPIPersistence():
           //complete(fileIO.gametoJson(dao.load()).toString())
         }
       },
-      get {
-        path("persistence" / "loadfromMongoDB") {
-          //complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, fileIO.gametoJson(fileIO.load).toString()))
-          complete(fileIO.gametoJson(Mongo.load()).toString())
-        }
-      },
+        get {
+          path("persistence" / "loadfromMongoDB") {
+            val gameFuture = Mongo.load()
+            onSuccess(gameFuture) { game =>
+              complete(fileIO.gametoJson(game).toString())
+            }
+          }
+        },
       get {
         path("persistence" / "test") {
           complete("test")

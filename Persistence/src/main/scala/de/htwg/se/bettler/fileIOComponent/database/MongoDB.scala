@@ -24,19 +24,13 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.async.Async.{async, await}
 
-
-
-
 class MongoDB extends DAOInterface {
-
-
 
   /* Init */
   private val database_pw = "mongo"
-  private val database_username = "root"
+  private val database_username = "root2"
   private val host = "localhost"
   private val port = "27017"
-  
 
   val uri: String = s"mongodb://$database_username:$database_pw@$host:$port/?authSource=admin"
   private val mongoClient: MongoClient = MongoClient(uri)
@@ -47,14 +41,13 @@ class MongoDB extends DAOInterface {
 
   val gameCounterCollection: MongoCollection[Document] = database.getCollection("gameCounter")
 
-/* Initialize game counter */
+  /* Initialize game counter */
   val gameCounterDoc: Option[Document] = Await.result(gameCounterCollection.find(equal("name", "gameCounter")).headOption(), 5.seconds)
   if (gameCounterDoc.isEmpty) {
     gameCounterCollection.insertOne(Document("name" -> "gameCounter", "value" -> 0)).toFuture()
   }
 
-
-  override def save(game: Game): Unit = {
+  override def save(game: Game): Future[Unit] = Future {
     val turn = GameStateContext.getState().asInstanceOf[PlayerTurnState].currentPlayer
     val maxplayer = GameStateContext.getState().asInstanceOf[PlayerTurnState].maxPlayers
     val player1CardCount = game.getPlayers()(0).size
@@ -83,9 +76,11 @@ class MongoDB extends DAOInterface {
       val gameid = gameId
       println(s"Game saved in MongoDB with ID $gameId")
     }
+
+
   }
 
-  override def load(id: Option[Int] = None): Game = {
+  override def load(id: Option[Int] = None): Future[Game] = Future {
     val query = gameCollection.find(equal("id", 1))
     val gameDoc = Await.result(query.headOption(), 5.seconds)
     if (gameDoc.isDefined) {
@@ -130,6 +125,7 @@ class MongoDB extends DAOInterface {
       throw new NoSuchElementException("No game found with the given ID")
     }
   }
+
   override def storeGame(
                           maxPlayer: Int,
                           Turn: Int,
@@ -140,34 +136,35 @@ class MongoDB extends DAOInterface {
                           BoardCardCount: Int,
                           BoardCards: String,
                           id: Option[Int] = None
-                        ): Int = {
-
+                        ): Future[Int] = {
     val gameCounterDoc: Option[Document] = Await.result(this.gameCounterCollection.find(equal("name", "gameCounter")).headOption(), 5.seconds)
     val gameCounter: Int = gameCounterDoc.map(_.getInteger("value").toInt).getOrElse(0)
     val gameId = id.getOrElse(gameCounter + 1)
-    deleteGame(gameId)
-    val gameDoc = Document(
-      "id" -> gameId,
-      "maxPlayer" -> maxPlayer,
-      "turn" -> Turn,
-      "player1CardCount" -> player1CardCount,
-      "player1Cards" -> player1Cards,
-      "player2CardCount" -> player2CardCount,
-      "player2Cards" -> player2CardsString,
-      "boardCardCount" -> BoardCardCount,
-      "boardCards" -> BoardCards
-    )
-    val insertObservable = this.gameCollection.insertOne(gameDoc)
-    Await.result(insertObservable.toFuture(), 5.seconds)
-    gameDoc.getInteger("id")
+    deleteGame(gameId).map(_ => {
+      val gameDoc = Document(
+        "id" -> gameId,
+        "maxPlayer" -> maxPlayer,
+        "turn" -> Turn,
+        "player1CardCount" -> player1CardCount,
+        "player1Cards" -> player1Cards,
+        "player2CardCount" -> player2CardCount,
+        "player2Cards" -> player2CardsString,
+        "boardCardCount" -> BoardCardCount,
+        "boardCards" -> BoardCards
+      )
+      val insertObservable = this.gameCollection.insertOne(gameDoc)
+      Await.result(insertObservable.toFuture(), 5.seconds)
+      gameDoc.getInteger("id")
+    })
   }
-  override def deleteGame(id: Int): Try[Boolean] = {
+
+  override def deleteGame(id: Int): Future[Try[Unit]] = {
     val deleteObservable = gameCollection.deleteOne(equal("id", id))
     val result = Await.result(deleteObservable.toFuture(), 5.seconds)
     if (result.getDeletedCount == 1) {
-      Success(true)
+      Future.successful(Success(()))
     } else {
-      Failure(new NoSuchElementException("No game found with the given ID"))
+      Future.successful(Failure(new NoSuchElementException("No game found with the given ID")))
     }
   }
 }
