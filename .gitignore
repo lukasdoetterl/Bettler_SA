@@ -1,5 +1,15 @@
+# Ignore specific file names
+output_dsp
+out
+
+# Ignore files with specific extensions
 *.class
 *.log
+*.tasty
+*.jar
+*.zip
+
+# Ignore specific directories
 /.bloop
 /.metals
 /.vscode
@@ -13,5 +23,3 @@
 /project/target/
 /project/metals.sbt
 /project/.bloop
-game.json
-game.xml
