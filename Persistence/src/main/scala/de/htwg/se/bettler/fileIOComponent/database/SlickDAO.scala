@@ -18,7 +18,7 @@ import slick.lifted.TableQuery
 import scala.concurrent.{ExecutionContext, Future}
 import scala.concurrent.duration.DurationInt
 import scala.util.{Failure, Success, Try}
-import scala.async.Async.{async, await}
+
 
 class SlickDAO(implicit ec: ExecutionContext) extends DAOInterface {
 

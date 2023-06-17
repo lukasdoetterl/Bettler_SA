@@ -22,7 +22,7 @@ import scala.util.{Failure, Success, Try}
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.async.Async.{async, await}
+
 
 class MongoDB extends DAOInterface {
 

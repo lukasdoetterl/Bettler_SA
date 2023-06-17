@@ -16,14 +16,15 @@ import de.htwg.se.bettler.controller._
   val controller = injector.getInstance(classOf[ControllerInterface])
   val tui = TUIRest()
   //val tui = TUI(controller)
-
-  //val gui = SwingGui(controller)
+  val gui = SwingGui(controller)
   val fileIOService = RestAPIPersistence()
   val controllerService = ControllerRestAPI(controller)
   fileIOService.start()
   //test
   controllerService.start()
   tui.run
+
+
 
 
 //For TEsting :
