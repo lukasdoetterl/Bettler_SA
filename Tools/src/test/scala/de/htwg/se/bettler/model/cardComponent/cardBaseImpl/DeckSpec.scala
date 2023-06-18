@@ -6,7 +6,7 @@ package cardBaseImpl
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
-class deckSpec extends AnyWordSpec:
+class DeckSpec extends AnyWordSpec:
    "Deck" should {
       var deck = Deck(32)
       var deck2 = Deck(32)

@@ -13,7 +13,7 @@ import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
 import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.StartState
 import de.htwg.se.bettler.model.stateComponent.GameStateEvents
 
-class gameSpec extends AnyWordSpec:
+class GameSpec extends AnyWordSpec:
     "A Game" should {
         "have a factory method to create a pve or pvp game, or a pvp game if not specified" in {
             val pvpGame = Game("pvp")

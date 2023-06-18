@@ -14,7 +14,7 @@ import scala.util.Failure
 import scala.util.Success
 import scala.util.Try
 
-class cardSpec extends AnyWordSpec:
+class CardSpec extends AnyWordSpec:
   "Card" should {
     val card1 = Card(Symbol.Clubs, Value.Seven)
     val card2 = Card(Symbol.Spades, Value.King)

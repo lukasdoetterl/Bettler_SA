@@ -14,7 +14,7 @@ import de.htwg.se.bettler.model.stateComponent.stateBaseImpl.PlayerTurnState
 import de.htwg.se.bettler.model.gameComponent.pveGameImpl.PvEGame
 import de.htwg.se.bettler.model.gameComponent.Game
 
-class controllerSpec extends AnyWordSpec:
+class ControllerSpec extends AnyWordSpec:
     "Controller" should {
         GameStateContext.setState(StartState())
         val game = PvPGame()

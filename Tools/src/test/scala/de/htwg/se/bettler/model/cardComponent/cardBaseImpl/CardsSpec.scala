@@ -9,7 +9,7 @@ import Symbol._
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
-class cardsSpec extends AnyWordSpec:
+class CardsSpec extends AnyWordSpec:
     "Cards" should {
         "have a method to return the Set of Cards (Set[Card])" in {
             val set = (Set[CardInterface](Card(Symbol.Hearts, Value.Ace)))
