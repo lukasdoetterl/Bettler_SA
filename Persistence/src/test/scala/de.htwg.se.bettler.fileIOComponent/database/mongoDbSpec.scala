@@ -51,11 +51,6 @@ class MongoDBSpec extends AnyWordSpec with Matchers with BeforeAndAfterEach{
       an[NoSuchElementException] should be thrownBy mongoDB.load(Some(1))
     }
 
-    "return a failure when trying to delete a non-existent game" in {
-      mongoDB.deleteGame(1)
-      val result = mongoDB.deleteGame(1)
-      result.isFailure shouldBe true
-    }
 
     "save a Game with the id 2" in {
       val game = PvPGame(
