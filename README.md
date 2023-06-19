@@ -24,16 +24,16 @@
 
 ## Rules
 
-Thw Rules are as Follows : 
+The Rules are as Follows : 
 - 2 Players
 - each has 7 Cards
-- Cards can be layn in ascending order (7,8,9,10,J,Q,K,A)
-- double Cards can be lain ontop of doubbl
+- Cards can be lain in ascending order (7,8,9,10,J,Q,K,A)
+- double Cards can be lain ontop of double
 - if one player cannot play the other player can start over
 - the first player without cards wins , and the looser has to give the winner his best card
 
 ## Installation
-
+- java version 17 recommended (14 works as well)
 use sbt run
 
 ## Gameplay
