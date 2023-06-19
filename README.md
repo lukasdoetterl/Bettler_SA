@@ -5,7 +5,7 @@
 <h1 align="center">Bettler - Card Game</h1>
 
 <p align="center">
-  <img src="src/main/scala/de/htwg/se/bettler/aview/gui/bettler.png" alt="Bettler Game Screenshot" width="600">
+  <img src="view/src/main/scala/de/htwg/se/bettler/aview/gui/bettler.png" alt="Bettler Game Screenshot" width="600">
 </p>
 
 <p align="center">
