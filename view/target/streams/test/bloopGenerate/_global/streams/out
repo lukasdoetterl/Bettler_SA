@@ -1,0 +1,4 @@
+[debug] [bettler-view-test] Classpath dependencies List(bettler-Core)
+[debug] [bettler-view-test] Dependencies from configurations List(bettler-view)
+[debug] Bloop wrote the configuration of project 'bettler-view-test' to 'C:\Users\lukas\IdeaProjects\Bettler_SA_newest\.bloop\bettler-view-test.json'
+[success] Generated .bloop\bettler-view-test.json

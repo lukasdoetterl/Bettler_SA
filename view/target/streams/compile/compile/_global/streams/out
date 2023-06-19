@@ -1,0 +1,9 @@
+[0m[[0m[33mwarn[0m] [0m[0m[33m-- Warning: C:\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\tui\TUIRest.scala:125:14 [0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m125 |[0m              [33mval[0m [36mresult[0m = getRequest([31m"play?p1="[0m + x )[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |              [33m^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |             Line is indented too far to the left, or a `}` is missing[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m-- Warning: C:\Bettler_SA\view\src\main\scala\de\htwg\se\bettler\aview\tui\TUIRest.scala:126:14 [0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m126 |[0m              waitRefreshGame(result)[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |              [33m^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m    |             Line is indented too far to the left, or a `}` is missing[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

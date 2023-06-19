@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  persistence:
+    image: bettler-persistence:0.1.0-SNAPSHOT
+    ports:
+      - "8081:8081"
+    stdin_open: true
+    tty: true
+    container_name: thepersistence
+
+
+  core:
+    image: bettler-core:0.1.0-SNAPSHOT
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    container_name: thecore
+    depends_on:
+      - persistence
+
+  tui:
+    image: bettler-view:0.1.0-SNAPSHOT
+    stdin_open: true
+    tty: true
+    container_name: theview
+    depends_on:
+      - core
+
+  sa-bettler:
+    image: bettler:0.1.0-SNAPSHOT
+    ports:
+      - "8082:8082"
+    stdin_open: true
+    tty: true
+    read_only: false
+    container_name: thebettler
+    depends_on:
+      - persistence
+      - core
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix

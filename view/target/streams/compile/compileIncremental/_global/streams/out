@@ -1,0 +1,4 @@
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 21 products, 5 sources, 8 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/view/src/main/scala/de/htwg/se/bettler/aview/gui/SwingGui.scala, ${BASE}/view/src/main/scala/de/htwg/se/bettler/aview/tui/WebClient.scala, ${BASE}/view/src/main/scala/de/htwg/se/bettler/aview/tui/TUIRest.scala, ${BASE}/view/src/main/scala/de/htwg/se/bettler/aview/tui/main.scala, ${BASE}/view/src/main/scala/de/htwg/se/bettler/aview/tui/TUI.scala)[0m

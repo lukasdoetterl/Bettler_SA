@@ -1,0 +1,11 @@
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E008] Not Found Error: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\src\main\scala\de\htwg\se\bettler\controller\controllerBaseImp\Controller.scala:17:26 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m17 |[0m[33mimport[0m de.htwg.se.bettler.fileIOComponent.fileIOJson.FileIO[0m
+[0m[[0m[31merror[0m] [0m[0m   |       [31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |value fileIOComponent is not a member of de.htwg.se.bettler, but could be made available as an extension method.[0m
+[0m[[0m[31merror[0m] [0m[0m   |[0m
+[0m[[0m[31merror[0m] [0m[0m   |One of the following imports might make progress towards fixing the problem:[0m
+[0m[[0m[31merror[0m] [0m[0m   |[0m
+[0m[[0m[31merror[0m] [0m[0m   |  import akka.http.impl.util.JavaMapping.Implicits.convertToScala[0m
+[0m[[0m[31merror[0m] [0m[0m   |  import akka.http.javadsl.server.RoutingJavaMapping.Implicits.convertToScala[0m
+[0m[[0m[31merror[0m] [0m[0m   |[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

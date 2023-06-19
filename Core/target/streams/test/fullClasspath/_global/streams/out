@@ -1,0 +1,8 @@
+[0m[[0m[0minfo[0m] [0m[0mInstrumenting 6 classes to C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\jacoco\instrumented-classes[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting products: C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes\de\htwg\se\bettler\controller\CloseEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\Controller$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\Controller.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes\de\htwg\se\bettler\controller\controllerBaseImp\PlayCommand.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes\de\htwg\se\bettler\controller\ControllerInterface.class[0m
+[0m[[0m[0mdebug[0m] [0m[0minstrumenting C:\Users\lukas\IdeaProjects\Bettler_SA\Core\target\scala-3.0.2\classes\de\htwg\se\bettler\controller\GameChanged.class[0m
